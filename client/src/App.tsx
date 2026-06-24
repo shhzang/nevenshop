@@ -1,38 +1,73 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
+import NvLayout from "./components/layout/NvLayout";
+import NvHomePage from "./pages/NvHomePage";
+import NvProductsPage from "./pages/NvProductsPage";
+import NvProductDetailPage from "./pages/NvProductDetailPage";
+import NvStaticPage from "./pages/NvStaticPage";
+import NvNotFoundPage from "./pages/NvNotFoundPage";
 
-function Router() {
-  // make sure to consider if you need authentication for certain routes
+function NvRouter() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
+      {/* Root redirect to /en */}
+      <Route path="/">
+        <Redirect to="/en" />
+      </Route>
+
+      {/* Lang-prefixed routes */}
+      <Route path="/:lang">
+        {(params) => (
+          <NvLayout>
+            <NvHomePage />
+          </NvLayout>
+        )}
+      </Route>
+
+      <Route path="/:lang/products">
+        {(params) => (
+          <NvLayout>
+            <NvProductsPage />
+          </NvLayout>
+        )}
+      </Route>
+
+      <Route path="/:lang/products/:slug">
+        {(params) => (
+          <NvLayout>
+            <NvProductDetailPage />
+          </NvLayout>
+        )}
+      </Route>
+
+      <Route path="/:lang/page/:slug">
+        {(params) => (
+          <NvLayout>
+            <NvStaticPage />
+          </NvLayout>
+        )}
+      </Route>
+
+      {/* 404 */}
+      <Route>
+        <NvLayout>
+          <NvNotFoundPage />
+        </NvLayout>
+      </Route>
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <NvRouter />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

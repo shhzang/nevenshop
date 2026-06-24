@@ -1,0 +1,49 @@
+{
+    "primary_color": "var(--awb-color4)",
+    "site_width": "1243px",
+    "header_position": "top",
+    "header_layout": "v3",
+    "content_bg_color": "var(--awb-color1)",
+    "header_bg_color": "var(--awb-color1)",
+    "colors": {
+        "color1": {
+            "label": "Color 1",
+            "color": "#ffffff"
+        },
+        "color2": {
+            "label": "Color 2",
+            "color": "#f8f9fa"
+        },
+        "color3": {
+            "label": "Color 3",
+            "color": "#e2e2e2"
+        },
+        "color4": {
+            "label": "Color 4",
+            "color": "#65bc7b"
+        },
+        "color5": {
+            "label": "Color 5",
+            "color": "#198fd9"
+        },
+        "color6": {
+            "label": "Color 6",
+            "color": "#212934"
+        },
+        "color7": {
+            "label": "Color 7",
+            "color": "#1c1c1c"
+        },
+        "color8": {
+            "label": "Color 8",
+            "color": "#000000"
+        }
+    },
+    "content_break_point": "800",
+    "grid_main_break_point": "1099",
+    "main_padding": {
+        "top": "70px",
+        "bottom": "70px"
+    },
+    "fonts": []
+}

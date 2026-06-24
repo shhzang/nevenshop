@@ -1,0 +1,115 @@
+{
+    "classic-main-menu": {
+        "name": "Classic Main Menu",
+        "items": [
+            {
+                "id": 4777,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/home-3/",
+                "parent": 0
+            },
+            {
+                "id": 5324,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5324/",
+                "parent": 0
+            },
+            {
+                "id": 5325,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5325/",
+                "parent": 0
+            },
+            {
+                "id": 5309,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5309/",
+                "parent": 0
+            },
+            {
+                "id": 5310,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5310/",
+                "parent": 0
+            },
+            {
+                "id": 5311,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5311/",
+                "parent": 0
+            },
+            {
+                "id": 5482,
+                "title": "Support",
+                "type": "nav_menu_item",
+                "url": "#",
+                "parent": 0
+            },
+            {
+                "id": 5509,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5509/",
+                "parent": 5482
+            },
+            {
+                "id": 6319,
+                "title": "Online Shop",
+                "type": "nav_menu_item",
+                "url": "https://shop.nevenshopper.com/shop-online/",
+                "parent": 0
+            }
+        ]
+    },
+    "classic-mobile-menu": {
+        "name": "Classic Mobile Menu",
+        "items": [
+            {
+                "id": 4859,
+                "title": "Home",
+                "type": "nav_menu_item",
+                "url": "/home-4/",
+                "parent": 0
+            }
+        ]
+    },
+    "languages": {
+        "name": "Languages",
+        "items": [
+            {
+                "id": 5557,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5557/",
+                "parent": 0
+            },
+            {
+                "id": 5558,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5558/",
+                "parent": 5557
+            },
+            {
+                "id": 5555,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5555/",
+                "parent": 5557
+            },
+            {
+                "id": 5731,
+                "title": "",
+                "type": "nav_menu_item",
+                "url": "/5731/",
+                "parent": 5557
+            }
+        ]
+    }
+}
