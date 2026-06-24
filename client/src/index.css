@@ -27,6 +27,9 @@
   --mobile-breakpoint: 800px;
   --tablet-breakpoint: 1024px;
   --grid-main-breakpoint: 1099px;
+  /* Responsive tokens */
+  --logo-width: 225px;
+  --product-card-min-width: 280px;
   /* Typography */
   --body-font-size: 16px;
   --body-line-height: 1.7;
@@ -40,6 +43,55 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
 }
+
+/* =============================================================================
+   Responsive Breakpoints
+   ============================================================================= */
+
+/* Tablet landscape / small desktop */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: 50px;
+    --header-padding: 8px;
+    --product-card-min-width: 240px;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 800px) {
+  :root {
+    --header-padding: 4px;
+    --section-padding: 40px;
+    --content-padding: 20px;
+    --body-font-size: 15px;
+    --logo-width: 160px;
+    --product-card-min-width: 220px;
+  }
+  .container-site {
+    padding-inline: 16px;
+  }
+}
+
+/* Mobile phone */
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 30px;
+    --content-padding: 14px;
+    --body-font-size: 14px;
+    --logo-width: 130px;
+    --product-card-min-width: 150px;
+    --h1-size: clamp(1.5rem, 1rem + 4vw, 2rem);
+    --h2-size: clamp(1.25rem, 0.8rem + 3vw, 1.5rem);
+    --h3-size: clamp(1.1rem, 0.7rem + 2vw, 1.25rem);
+  }
+  .container-site {
+    padding-inline: 12px;
+  }
+}
+
+/* =============================================================================
+   Base Styles
+   ============================================================================= */
 
 *,
 *::before,
@@ -61,11 +113,15 @@ body {
   background: var(--color-awb-1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
   display: block;
 }
 
@@ -91,7 +147,20 @@ h1 { font-size: var(--h1-size); }
 h2 { font-size: var(--h2-size); }
 h3 { font-size: var(--h3-size); }
 
-/* RTL support for Arabic */
+/* =============================================================================
+   Touch-friendly tap targets
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  a, button, [role="button"] {
+    min-height: 44px;
+  }
+}
+
+/* =============================================================================
+   RTL support
+   ============================================================================= */
+
 [dir="rtl"] {
   direction: rtl;
   text-align: right;
@@ -102,20 +171,32 @@ h3 { font-size: var(--h3-size); }
   display: inline-block;
 }
 
-/* Avada container */
+/* =============================================================================
+   Responsive table wrapper
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  table, .responsive-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* =============================================================================
+   Avada container
+   ============================================================================= */
+
 .container-site {
   max-width: var(--site-width);
   margin-inline: auto;
   padding-inline: var(--content-padding);
 }
 
-@media (max-width: 800px) {
-  .container-site {
-    padding-inline: 20px;
-  }
-}
+/* =============================================================================
+   Avada sections
+   ============================================================================= */
 
-/* Avada full-width section */
 .fusion-section {
   padding: var(--section-padding) 0;
 }
@@ -124,7 +205,10 @@ h3 { font-size: var(--h3-size); }
   padding: 40px 0;
 }
 
-/* Avada button styles */
+/* =============================================================================
+   Avada button styles
+   ============================================================================= */
+
 .awb-btn {
   display: inline-flex;
   align-items: center;
@@ -169,7 +253,213 @@ h3 { font-size: var(--h3-size); }
   font-size: 16px;
 }
 
-/* Utility: visually hidden */
+@media (max-width: 480px) {
+  .awb-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  .awb-btn-lg {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}
+
+/* =============================================================================
+   Fusion Content Block Responsive Overrides
+   ============================================================================= */
+
+/* Container blocks */
+@media (max-width: 800px) {
+  .fusion-container {
+    padding-top: var(--section-padding) !important;
+    padding-bottom: var(--section-padding) !important;
+    padding-left: var(--content-padding) !important;
+    padding-right: var(--content-padding) !important;
+  }
+}
+
+/* Row blocks - remove negative margins on mobile */
+@media (max-width: 768px) {
+  .fusion-row {
+    margin: 0 !important;
+  }
+}
+
+/* Column blocks - stack vertically on mobile */
+@media (max-width: 768px) {
+  .fusion-column {
+    width: 100% !important;
+    padding: 0 0 16px 0 !important;
+  }
+}
+
+/* Image galleries */
+@media (max-width: 800px) {
+  .fusion-gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 480px) {
+  .fusion-gallery {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Hero/single-column gallery */
+@media (max-width: 800px) {
+  .fusion-gallery-hero {
+    max-width: 100% !important;
+  }
+}
+
+/* Standalone images */
+@media (max-width: 800px) {
+  .fusion-image-block {
+    max-width: 100% !important;
+  }
+}
+
+/* Content boxes / flip boxes */
+@media (max-width: 480px) {
+  .fusion-content-boxes {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tabs navigation */
+@media (max-width: 480px) {
+  .fusion-tabs-nav > div {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+}
+
+/* Tagline box (CTA) */
+@media (max-width: 480px) {
+  .fusion-tagline-box {
+    padding: 24px 16px !important;
+  }
+}
+
+/* Form wrapper */
+@media (max-width: 480px) {
+  .fusion-form-wrapper {
+    padding: 20px 16px !important;
+  }
+}
+
+/* Grid block */
+@media (max-width: 480px) {
+  .fusion-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* =============================================================================
+   Header
+   ============================================================================= */
+
+@media (max-width: 800px) {
+  .mobile-toggle { display: flex !important; align-items: center; gap: 4px; }
+  .desktop-nav { display: none !important; }
+  .desktop-lang { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .mobile-toggle {
+    font-size: 18px !important;
+    padding: 4px !important;
+  }
+}
+
+/* =============================================================================
+   Footer
+   ============================================================================= */
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-col-left { flex: 0 0 40%; }
+.footer-col-right { flex: 0 0 60%; }
+
+@media (max-width: 768px) {
+  .footer-col-left,
+  .footer-col-right {
+    flex: 0 0 100% !important;
+  }
+  .footer-col-left {
+    padding-bottom: 10px !important;
+  }
+  .footer-col-right {
+    padding-top: 0 !important;
+  }
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px 20px;
+}
+
+@media (max-width: 480px) {
+  .footer-links-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-social-icon {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+/* =============================================================================
+   Product Grid & Card
+   ============================================================================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--product-card-min-width), 1fr));
+  gap: 30px;
+}
+
+@media (max-width: 800px) {
+  .product-grid {
+    gap: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .product-grid {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card-body {
+    padding: 12px !important;
+  }
+}
+
+/* =============================================================================
+   Carousel
+   ============================================================================= */
+
+@media (max-width: 480px) {
+  .carousel-arrow {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* =============================================================================
+   Utility: visually hidden
+   ============================================================================= */
+
 .screen-reader-text {
   position: absolute;
   width: 1px;

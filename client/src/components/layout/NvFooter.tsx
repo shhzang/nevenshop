@@ -78,18 +78,17 @@ export default function NvFooter() {
   return (
     <footer style={{ background: '#e9e9e9', marginTop: 0 }}>
       <div
+        className="footer-columns"
         style={{
           maxWidth: 'calc(1200px + 60px)',
           margin: '0 auto',
-          padding: '50px 30px 10px',
-          display: 'flex',
-          flexWrap: 'wrap',
+          padding: 'var(--section-padding) var(--content-padding) 10px',
         }}
       >
         {/* Left Column: Logo + Social Icons */}
         <div
+          className="footer-col-left"
           style={{
-            flex: '0 0 40%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -111,6 +110,7 @@ export default function NvFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={s.label}
+                className="footer-social-icon"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -139,14 +139,8 @@ export default function NvFooter() {
         </div>
 
         {/* Right Column: Quick Links */}
-        <div style={{ flex: '0 0 60%', paddingTop: 20 }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-              gap: '8px 20px',
-            }}
-          >
+        <div className="footer-col-right" style={{ paddingTop: 20 }}>
+          <div className="footer-links-grid">
             {QUICK_LINKS.map((link) => (
               <Link
                 key={link.path}
@@ -170,7 +164,7 @@ export default function NvFooter() {
       <div
         style={{
           borderTop: '1px solid rgba(0,0,0,0.08)',
-          padding: '16px 30px',
+          padding: '16px var(--content-padding)',
           textAlign: 'center',
           fontFamily: 'var(--font-ui)',
           fontSize: 13,

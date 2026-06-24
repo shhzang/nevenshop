@@ -9,7 +9,7 @@ interface NvLayoutProps {
 export default function NvLayout({ children }: NvLayoutProps) {
   const { dir } = useLanguage();
   return (
-    <div dir={dir} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div dir={dir} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
       <NvHeader />
       <main style={{ flex: 1, paddingTop: 'var(--header-height)' }}>
         {children}

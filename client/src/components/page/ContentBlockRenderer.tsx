@@ -50,12 +50,12 @@ function fixUrl(url: string, lang: string = 'en'): string {
     .replace(/\/wp-content\/manus-storage\//, '/manus-storage/')
     // Remove trailing slash
     .replace(/\/$/, '');
-  
+
   // Add language prefix to product and page links
   if (result.startsWith('/products/') || result.startsWith('/page/')) {
     result = `/${lang}${result}`;
   }
-  
+
   return result;
 }
 
@@ -85,6 +85,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
       ));
       return (
         <div
+          className="fusion-container"
           style={{
             background: bgImage ? `url(${bgImage}) center/cover no-repeat` : bgColor,
             padding: padding || (isFlex ? undefined : '60px 0'),
@@ -100,7 +101,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
     case 'fusion_builder_row':
     case 'fusion_builder_row_inner':
       return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', margin: '0 -15px' }}>
+        <div className="fusion-row" style={{ display: 'flex', flexWrap: 'wrap', margin: '0 -15px' }}>
           {children?.map((child, i) => (
             <RenderBlock key={i} block={child} />
           ))}
@@ -117,7 +118,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
       };
       const width = widthMap[size] || (/^\d+(\.\d+)?$/.test(size) ? `${parseFloat(size)}%` : '100%');
       return (
-        <div style={{ width, padding: '0 15px', boxSizing: 'border-box' }}>
+        <div className="fusion-column" style={{ width, padding: '0 15px', boxSizing: 'border-box' }}>
           {children?.map((child, i) => (
             <RenderBlock key={i} block={child} />
           ))}
@@ -156,6 +157,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
         <div style={{ textAlign: (attrs.alignment || 'left') as React.CSSProperties['textAlign'], margin: '16px 0' }}>
           <a
             href={href}
+            className="awb-btn awb-btn-primary"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -199,6 +201,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
     case 'fusion_table':
       return (
         <div
+          className="responsive-table"
           style={{ margin: '20px 0', overflowX: 'auto' }}
           dangerouslySetInnerHTML={{ __html: blockText(block, 'table_content') || childrenToHtml(children || []) }}
         />
@@ -206,7 +209,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
 
     case 'fusion_form':
       return (
-        <div style={{ margin: '30px 0', padding: 30, background: 'var(--color-awb-2)', borderRadius: 8 }}>
+        <div className="fusion-form-wrapper" style={{ margin: '30px 0', padding: 30, background: 'var(--color-awb-2)', borderRadius: 8 }}>
           <ProductInquiry productTitle={attrs.product_title} />
         </div>
       );
@@ -221,7 +224,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
           src={src}
           alt={attrs.alt || ''}
           style={{
-            maxWidth: '100%',
+            width: '100%',
             height: 'auto',
             borderRadius: attrs.border_radius || 0,
             display: 'block',
@@ -230,7 +233,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
         />
       );
       return (
-        <div style={{ margin: '16px 0' }}>
+        <div className="fusion-image-block" style={{ maxWidth: 'min(800px, 70%)', margin: '16px auto' }}>
           {link ? (
             <a href={link} target={attrs.link_target || '_self'} rel="noopener noreferrer">
               {img}
@@ -257,7 +260,6 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
           const src = child.attrs?.src || fixUrl(child.attrs?.element_content || '', lang);
           if (src) {
             imageList.push(src);
-            // Extract link from child attrs (push empty string if no link to keep arrays aligned)
             const link = child.attrs?.link ? fixUrl(child.attrs.link, lang) : '';
             linkList.push(link);
           }
@@ -266,9 +268,8 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
       if (imageList.length === 0) return null;
       const cols = parseInt(attrs.columns || attrs.column_spacing || '1') || 1;
       if (cols === 1) {
-        // Single column (hero/banner) - constrain width to 70% and center
         return (
-          <div style={{ maxWidth: '70%', margin: '0 auto' }}>
+          <div className="fusion-gallery-hero" style={{ maxWidth: '70%', margin: '0 auto' }}>
             <NvImageCarousel
               images={imageList}
               links={linkList}
@@ -282,6 +283,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
       }
       return (
         <div
+          className="fusion-gallery"
           style={{
             display: 'grid',
             gridTemplateColumns: `repeat(${cols}, 1fr)`,
@@ -424,6 +426,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
       const cols = parseInt(attrs.columns || '3');
       return (
         <div
+          className="fusion-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: `repeat(${cols}, 1fr)`,
@@ -443,6 +446,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
     case 'fusion_tagline_box':
       return (
         <div
+          className="fusion-tagline-box"
           style={{
             background: attrs.backgroundcolor || 'var(--color-awb-4)',
             color: attrs.textcolor || '#fff',
@@ -476,7 +480,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
     case 'fusion_tabs':
       return (
         <div style={{ margin: '30px 0' }}>
-          <div style={{ display: 'flex', borderBottom: '1px solid var(--color-awb-3)', marginBottom: 20, overflowX: 'auto' }}>
+          <div className="fusion-tabs-nav" style={{ display: 'flex', borderBottom: '1px solid var(--color-awb-3)', marginBottom: 20, overflowX: 'auto' }}>
             {(block as any).tabs?.map((tab: any, i: number) => (
               <div key={i} style={{ padding: '10px 20px', fontWeight: 600, fontSize: 14, borderBottom: '2px solid var(--color-awb-4)', whiteSpace: 'nowrap' }}>
                 {tab.attrs.title || `${t('Tab')} ${i + 1}`}
@@ -497,6 +501,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
     case 'fusion_flip_boxes':
       return (
         <div
+          className="fusion-content-boxes"
           style={{
             display: 'grid',
             gridTemplateColumns: `repeat(auto-fit, minmax(250px, 1fr))`,

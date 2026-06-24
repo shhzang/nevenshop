@@ -42,7 +42,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         />
       </div>
-      <div style={{ padding: 20 }}>
+      <div className="product-card-body" style={{ padding: 20 }}>
         <h3
           style={{
             fontSize: 16,

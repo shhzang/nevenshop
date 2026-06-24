@@ -26,7 +26,7 @@ export default function NvImageCarousel({
   const [current, setCurrent] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [effColumns, setEffColumns] = useState(columns);
-  const [containerW, setContainerW] = useState(0);
+  const [containerW, setContainerW] = useState(1200);
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const startX = useRef(0);
@@ -35,7 +35,7 @@ export default function NvImageCarousel({
     const update = () => {
       const w = window.innerWidth;
       if (columns <= 1) { setEffColumns(1); return; }
-      const factor = w >= 1024 ? 1 : w >= 500 ? 0.5 : 0.25;
+      const factor = w >= 1024 ? 1 : w >= 768 ? 0.66 : w >= 480 ? 0.5 : 1;
       setEffColumns(Math.max(1, Math.round(columns * factor)));
       // Measure container width for slide sizing
       if (containerRef.current) {
@@ -52,7 +52,11 @@ export default function NvImageCarousel({
   const isHero = safeColumns === 1;
 
   // Banner images are 1920x640 (3:1), product images are ~1000x1000 (1:1)
-  const ratio = aspectRatio || (isHero ? '3 / 1' : '1 / 1');
+  // On mobile, hero banners switch to 16/9 for better visibility
+  const heroRatio = typeof window !== 'undefined' && window.innerWidth < 480 ? '16 / 9'
+    : typeof window !== 'undefined' && window.innerWidth < 768 ? '2 / 1'
+    : '3 / 1';
+  const ratio = aspectRatio || (isHero ? heroRatio : '1 / 1');
 
   const goTo = useCallback((index: number) => {
     setCurrent((index + totalSlides) % totalSlides);
@@ -176,6 +180,7 @@ export default function NvImageCarousel({
           <button
             onClick={prev}
             aria-label="Previous"
+            className="carousel-arrow"
             style={{
               position: 'absolute',
               left: 12,
@@ -202,6 +207,7 @@ export default function NvImageCarousel({
           <button
             onClick={next}
             aria-label="Next"
+            className="carousel-arrow"
             style={{
               position: 'absolute',
               right: 12,

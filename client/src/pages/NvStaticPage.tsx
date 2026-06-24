@@ -25,7 +25,7 @@ export default function NvStaticPage() {
 
   return (
     <>
-      <div style={{ background: 'var(--color-awb-2)', padding: '60px 0 40px' }}>
+      <div style={{ background: 'var(--color-awb-2)', padding: 'var(--section-padding) 0 calc(var(--section-padding) * 0.6)' }}>
         <div className="container-site">
           <NvBreadcrumbs items={[
             { label: t('Home'), path: '/' },
@@ -34,7 +34,7 @@ export default function NvStaticPage() {
           <h1 style={{ margin: 0 }}>{page.title}</h1>
         </div>
       </div>
-      <section style={{ padding: '60px 0' }}>
+      <section style={{ padding: 'var(--section-padding) 0' }}>
         <div className="container-site">
           {page.content_blocks?.length > 0 ? (
             <ContentBlockRenderer blocks={page.content_blocks} lang={currentLang} />

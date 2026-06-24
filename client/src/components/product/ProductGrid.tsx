@@ -8,11 +8,7 @@ interface ProductGridProps {
 export default function ProductGrid({ products }: ProductGridProps) {
   return (
     <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: 30,
-      }}
+      className="product-grid"
     >
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />

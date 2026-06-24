@@ -74,7 +74,7 @@ export default function NvHeader() {
         style={{
           maxWidth: 1248,
           margin: '0 auto',
-          padding: '0 30px',
+          padding: '0 var(--content-padding)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -86,7 +86,7 @@ export default function NvHeader() {
             <img
               src={LOGO_BLACK}
               alt="NevenShopper"
-              style={{ width: 225, height: 'auto' }}
+              style={{ width: 'var(--logo-width)', height: 'auto' }}
             />
           </Link>
         </div>
@@ -233,7 +233,7 @@ export default function NvHeader() {
             fontFamily: 'var(--font-ui)',
           }}
         >
-          {mobileOpen ? '✕' : `${t('MENU')} ☰`}
+          {mobileOpen ? '✕' : '☰'}
         </button>
       </div>
 
@@ -242,9 +242,10 @@ export default function NvHeader() {
         <div
           className="mobile-menu"
           style={{
-            background: 'var(--color-awb-3)',
+            background: '#fff',
             borderTop: '1px solid var(--color-awb-3)',
-            padding: '8px 30px',
+            padding: '0 var(--content-padding) 12px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
           }}
         >
           {NAV_ITEMS.map((item) => {
@@ -311,13 +312,7 @@ export default function NvHeader() {
         </div>
       )}
 
-      <style>{`
-        @media (max-width: 800px) {
-          .mobile-toggle { display: block !important; }
-          .desktop-nav { display: none !important; }
-          .desktop-lang { display: none !important; }
-        }
-      `}</style>
+      {/* Mobile nav styles are in index.css */}
     </header>
   );
 }
