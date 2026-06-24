@@ -13,7 +13,7 @@ export default function NvHomePage() {
           <p>Loading...</p>
         </div>
       ) : homePage?.content_blocks?.length ? (
-        <ContentBlockRenderer blocks={homePage.content_blocks} />
+        <ContentBlockRenderer blocks={homePage.content_blocks} lang={currentLang} />
       ) : null}
     </>
   );

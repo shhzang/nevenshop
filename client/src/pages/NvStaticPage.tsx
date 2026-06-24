@@ -37,7 +37,7 @@ export default function NvStaticPage() {
       <section style={{ padding: '60px 0' }}>
         <div className="container-site">
           {page.content_blocks?.length > 0 ? (
-            <ContentBlockRenderer blocks={page.content_blocks} />
+            <ContentBlockRenderer blocks={page.content_blocks} lang={currentLang} />
           ) : page.raw_content ? (
             <div dangerouslySetInnerHTML={{ __html: page.raw_content }} />
           ) : (

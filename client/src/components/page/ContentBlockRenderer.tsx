@@ -5,13 +5,14 @@ import type { ContentBlock } from '../../../../shared/nevenshop-types';
 
 interface ContentBlockRendererProps {
   blocks: ContentBlock[];
+  lang?: string;
 }
 
-export default function ContentBlockRenderer({ blocks }: ContentBlockRendererProps) {
+export default function ContentBlockRenderer({ blocks, lang = 'en' }: ContentBlockRendererProps) {
   return (
     <>
       {blocks.map((block, i) => (
-        <RenderBlock key={i} block={block} />
+        <RenderBlock key={i} block={block} lang={lang} />
       ))}
     </>
   );
@@ -38,9 +39,9 @@ function childrenToHtml(children: ContentBlock[]): string {
     .join('');
 }
 
-function fixUrl(url: string): string {
+function fixUrl(url: string, lang: string = 'en'): string {
   if (!url) return '#';
-  return url
+  let result = url
     // Handle http://localhost/goods.nevenshop.com/products/... → /products/...
     .replace(/^https?:\/\/[^\/]+\/goods\.nevenshop\.com/, '')
     // Handle /wp-content/uploads/ → /uploads/
@@ -49,9 +50,16 @@ function fixUrl(url: string): string {
     .replace(/\/wp-content\/manus-storage\//, '/manus-storage/')
     // Remove trailing slash
     .replace(/\/$/, '');
+  
+  // Add language prefix to product and page links
+  if (result.startsWith('/products/') || result.startsWith('/page/')) {
+    result = `/${lang}${result}`;
+  }
+  
+  return result;
 }
 
-function RenderBlock({ block }: { block: ContentBlock }) {
+function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: string }) {
   const { t } = useTranslations();
   const { type, attrs, children, content } = block;
 
@@ -65,7 +73,7 @@ function RenderBlock({ block }: { block: ContentBlock }) {
       const isFullWidth = attrs.hundred_percent === 'yes';
       const bgColor = attrs.background_color || 'transparent';
       const rawBgImage: string = attrs.background_image || '';
-      const bgImage = rawBgImage ? fixUrl(rawBgImage) : '';
+      const bgImage = rawBgImage ? fixUrl(rawBgImage, lang) : '';
       const padding = attrs.padding_top || attrs.padding_right
         ? `${attrs.padding_top || '0'} ${attrs.padding_right || '0'} ${attrs.padding_bottom || '0'} ${attrs.padding_left || '0'}`
         : undefined;
@@ -143,7 +151,7 @@ function RenderBlock({ block }: { block: ContentBlock }) {
 
     case 'fusion_button': {
       const text = blockText(block, 'text') || t('Learn More');
-      const href = fixUrl(attrs.link || '#');
+      const href = fixUrl(attrs.link || '#', lang);
       return (
         <div style={{ textAlign: (attrs.alignment || 'left') as React.CSSProperties['textAlign'], margin: '16px 0' }}>
           <a
@@ -205,9 +213,9 @@ function RenderBlock({ block }: { block: ContentBlock }) {
 
     case 'fusion_imageframe':
     case 'fusion_image': {
-      const src = attrs.src || fixUrl(attrs.element_content || '');
+      const src = attrs.src || fixUrl(attrs.element_content || '', lang);
       if (!src) return null;
-      const link = attrs.link ? fixUrl(attrs.link) : null;
+      const link = attrs.link ? fixUrl(attrs.link, lang) : null;
       const img = (
         <img
           src={src}
@@ -240,17 +248,17 @@ function RenderBlock({ block }: { block: ContentBlock }) {
         const pairs = attrs.images.split('|');
         for (const pair of pairs) {
           const [imgUrl, linkUrl] = pair.split(',');
-          if (imgUrl) imageList.push(fixUrl(imgUrl.trim()));
-          if (linkUrl) linkList.push(fixUrl(linkUrl.trim()));
+          if (imgUrl) imageList.push(fixUrl(imgUrl.trim(), lang));
+          if (linkUrl) linkList.push(fixUrl(linkUrl.trim(), lang));
         }
       }
       if (imageList.length === 0 && children) {
         for (const child of children) {
-          const src = child.attrs?.src || fixUrl(child.attrs?.element_content || '');
+          const src = child.attrs?.src || fixUrl(child.attrs?.element_content || '', lang);
           if (src) {
             imageList.push(src);
             // Extract link from child attrs (push empty string if no link to keep arrays aligned)
-            const link = child.attrs?.link ? fixUrl(child.attrs.link) : '';
+            const link = child.attrs?.link ? fixUrl(child.attrs.link, lang) : '';
             linkList.push(link);
           }
         }
@@ -305,7 +313,7 @@ function RenderBlock({ block }: { block: ContentBlock }) {
       const slides: string[] = [];
       if (children) {
         for (const child of children) {
-          const src = child.attrs?.src || fixUrl(child.attrs?.background || child.attrs?.image || '');
+          const src = child.attrs?.src || fixUrl(child.attrs?.background || child.attrs?.image || '', lang);
           if (src) slides.push(src);
         }
       }
@@ -327,10 +335,10 @@ function RenderBlock({ block }: { block: ContentBlock }) {
       const links: string[] = [];
       if (children) {
         for (const child of children) {
-          const src = child.attrs?.src || fixUrl(child.attrs?.thumbnail || '');
+          const src = child.attrs?.src || fixUrl(child.attrs?.thumbnail || '', lang);
           if (src) {
             images.push(src);
-            if (child.attrs?.link) links.push(fixUrl(child.attrs.link));
+            if (child.attrs?.link) links.push(fixUrl(child.attrs.link, lang));
           }
         }
       }
