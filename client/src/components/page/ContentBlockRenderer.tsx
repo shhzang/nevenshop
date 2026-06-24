@@ -46,7 +46,9 @@ function fixUrl(url: string): string {
     // Handle /wp-content/uploads/ → /uploads/
     .replace(/\/wp-content\/uploads\//, '/uploads/')
     // Handle /wp-content/manus-storage/ → /manus-storage/
-    .replace(/\/wp-content\/manus-storage\//, '/manus-storage/');
+    .replace(/\/wp-content\/manus-storage\//, '/manus-storage/')
+    // Remove trailing slash
+    .replace(/\/$/, '');
 }
 
 function RenderBlock({ block }: { block: ContentBlock }) {
