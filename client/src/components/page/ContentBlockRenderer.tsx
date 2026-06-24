@@ -41,8 +41,12 @@ function childrenToHtml(children: ContentBlock[]): string {
 function fixUrl(url: string): string {
   if (!url) return '#';
   return url
-    .replace(/^https?:\/\/[^/]+\/goods\.nevenshop\.com/, '')
-    .replace(/^https?:\/\/[^/]+\/wp-content\/uploads\//, '/uploads/');
+    // Handle http://localhost/goods.nevenshop.com/products/... → /products/...
+    .replace(/^https?:\/\/[^\/]+\/goods\.nevenshop\.com/, '')
+    // Handle /wp-content/uploads/ → /uploads/
+    .replace(/\/wp-content\/uploads\//, '/uploads/')
+    // Handle /wp-content/manus-storage/ → /manus-storage/
+    .replace(/\/wp-content\/manus-storage\//, '/manus-storage/');
 }
 
 function RenderBlock({ block }: { block: ContentBlock }) {
@@ -253,9 +257,9 @@ function RenderBlock({ block }: { block: ContentBlock }) {
       if (imageList.length === 0) return null;
       const cols = parseInt(attrs.columns || attrs.column_spacing || '1') || 1;
       if (cols === 1) {
-        // Single column (hero/banner) - constrain width to 77% and center
+        // Single column (hero/banner) - constrain width to 70% and center
         return (
-          <div style={{ maxWidth: '77%', margin: '0 auto' }}>
+          <div style={{ maxWidth: '70%', margin: '0 auto' }}>
             <NvImageCarousel
               images={imageList}
               links={linkList}
