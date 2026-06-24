@@ -70,6 +70,8 @@ export default function NvImageCarousel({
 
   // Mouse drag
   const onMouseDown = (e: React.MouseEvent) => {
+    // Don't start drag if clicking on a link
+    if ((e.target as HTMLElement).tagName === 'A') return;
     setIsDragging(true);
     startX.current = e.pageX;
   };

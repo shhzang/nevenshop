@@ -247,10 +247,9 @@ function RenderBlock({ block }: { block: ContentBlock }) {
           const src = child.attrs?.src || fixUrl(child.attrs?.element_content || '');
           if (src) {
             imageList.push(src);
-            // Extract link from child attrs
-            if (child.attrs?.link) {
-              linkList.push(fixUrl(child.attrs.link));
-            }
+            // Extract link from child attrs (push empty string if no link to keep arrays aligned)
+            const link = child.attrs?.link ? fixUrl(child.attrs.link) : '';
+            linkList.push(link);
           }
         }
       }
