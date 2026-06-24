@@ -29,3 +29,9 @@
 - [x] 在 App.tsx 中添加 /admin/inquiries 路由
 - [x] 测试管理员后台功能（7/7 通过）
 - [x] 保存 checkpoint
+
+
+## Bug 修复
+
+- [x] 修复产品图片点击无反应（应跳转到产品详情页）
+- [x] 修复首页 Banner 轮播尺寸过大问题

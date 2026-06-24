@@ -241,21 +241,30 @@ function RenderBlock({ block }: { block: ContentBlock }) {
       if (imageList.length === 0 && children) {
         for (const child of children) {
           const src = child.attrs?.src || fixUrl(child.attrs?.element_content || '');
-          if (src) imageList.push(src);
+          if (src) {
+            imageList.push(src);
+            // Extract link from child attrs
+            if (child.attrs?.link) {
+              linkList.push(fixUrl(child.attrs.link));
+            }
+          }
         }
       }
       if (imageList.length === 0) return null;
       const cols = parseInt(attrs.columns || attrs.column_spacing || '1') || 1;
       if (cols === 1) {
+        // Single column (hero/banner) - constrain width to 77% and center
         return (
-          <NvImageCarousel
-            images={imageList}
-            links={linkList}
-            autoPlay={attrs.autoplay === 'yes'}
-            interval={parseInt(attrs.interval || '4000')}
-            showNav={true}
-            showDots={true}
-          />
+          <div style={{ maxWidth: '77%', margin: '0 auto' }}>
+            <NvImageCarousel
+              images={imageList}
+              links={linkList}
+              autoPlay={attrs.autoplay === 'yes'}
+              interval={parseInt(attrs.interval || '4000')}
+              showNav={true}
+              showDots={true}
+            />
+          </div>
         );
       }
       return (
