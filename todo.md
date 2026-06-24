@@ -17,4 +17,4 @@
 - [x] 更新App.tsx路由结构（多语言/:lang/前缀）
 - [x] 更新main.tsx入口
 - [x] 编写并通过vitest测试（7/7通过）
-- [ ] 保存checkpoint并发布
+- [x] 保存checkpoint并发布
