@@ -9,6 +9,8 @@ import NvProductsPage from "./pages/NvProductsPage";
 import NvProductDetailPage from "./pages/NvProductDetailPage";
 import NvStaticPage from "./pages/NvStaticPage";
 import NvNotFoundPage from "./pages/NvNotFoundPage";
+import AdminInquiriesPage from "./pages/AdminInquiriesPage";
+import AdminGuard from "./components/AdminGuard";
 
 function NvRouter() {
   return (
@@ -49,6 +51,13 @@ function NvRouter() {
             <NvStaticPage />
           </NvLayout>
         )}
+      </Route>
+
+      {/* Admin routes */}
+      <Route path="/admin/inquiries">
+        <AdminGuard>
+          <AdminInquiriesPage />
+        </AdminGuard>
       </Route>
 
       {/* 404 */}

@@ -18,3 +18,14 @@
 - [x] 更新main.tsx入口
 - [x] 编写并通过vitest测试（7/7通过）
 - [x] 保存checkpoint并发布
+
+## 管理员后台功能
+
+- [x] 创建后端 tRPC 路由（获取询盘列表、搜索、筛选、导出）
+- [x] 创建 AdminInquiriesPage 前端页面（表格显示询盘）
+- [x] 实现搜索和筛选功能（邮箱、产品、日期范围）
+- [x] 实现 CSV 导出功能
+- [x] 添加管理员权限验证（仅 owner 可访问）
+- [x] 在 App.tsx 中添加 /admin/inquiries 路由
+- [x] 测试管理员后台功能（7/7 通过）
+- [x] 保存 checkpoint
