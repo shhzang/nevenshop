@@ -279,11 +279,21 @@ function RenderBlock({ block }: { block: ContentBlock }) {
             margin: '20px 0',
           }}
         >
-          {imageList.map((src, i) => (
-            <div key={i} style={{ aspectRatio: '1', background: 'var(--color-awb-2)', borderRadius: 4, overflow: 'hidden' }}>
-              <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </div>
-          ))}
+          {imageList.map((src, i) => {
+            const link = linkList[i];
+            const img = <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />;
+            return (
+              <div key={i} style={{ aspectRatio: '1', background: 'var(--color-awb-2)', borderRadius: 4, overflow: 'hidden' }}>
+                {link ? (
+                  <a href={link} style={{ display: 'block', width: '100%', height: '100%' }}>
+                    {img}
+                  </a>
+                ) : (
+                  img
+                )}
+              </div>
+            );
+          })}
         </div>
       );
     }
