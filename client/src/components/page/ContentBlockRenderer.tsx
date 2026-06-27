@@ -255,6 +255,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
           if (linkUrl) linkList.push(fixUrl(linkUrl.trim(), lang));
         }
       }
+      const altList: string[] = [];
       if (imageList.length === 0 && children) {
         for (const child of children) {
           const src = child.attrs?.src || fixUrl(child.attrs?.element_content || '', lang);
@@ -262,6 +263,8 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
             imageList.push(src);
             const link = child.attrs?.link ? fixUrl(child.attrs.link, lang) : '';
             linkList.push(link);
+            const alt = child.attrs?.alt || child.attrs?.image_title || '';
+            altList.push(alt);
           }
         }
       }
@@ -273,6 +276,7 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
             <NvImageCarousel
               images={imageList}
               links={linkList}
+              alts={altList}
               autoPlay={attrs.autoplay === 'yes'}
               interval={parseInt(attrs.interval || '4000')}
               showNav={true}
@@ -293,7 +297,8 @@ function RenderBlock({ block, lang = 'en' }: { block: ContentBlock; lang?: strin
         >
           {imageList.map((src, i) => {
             const link = linkList[i];
-            const img = <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />;
+            const altText = altList[i] || '';
+            const img = <img src={src} alt={altText} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />;
             return (
               <div key={i} style={{ aspectRatio: '1', background: 'var(--color-awb-2)', borderRadius: 4, overflow: 'hidden' }}>
                 {link ? (

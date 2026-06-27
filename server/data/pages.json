@@ -180,7 +180,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-5_e75a6cd1.jpg",
                                                     "image_id": "5602|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 1"
                                                 },
                                                 "children": []
                                             },
@@ -189,7 +190,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-6_8ccd3a1e.jpg",
                                                     "image_id": "5603|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 2"
                                                 },
                                                 "children": []
                                             },
@@ -198,7 +200,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-7_99828e82.jpg",
                                                     "image_id": "5604|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 3"
                                                 },
                                                 "children": []
                                             },
@@ -207,7 +210,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-8-1_266bc11a.jpg",
                                                     "image_id": "6245|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 4"
                                                 },
                                                 "children": []
                                             },
@@ -216,7 +220,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-9_ace6bac5.jpg",
                                                     "image_id": "5606|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 5"
                                                 },
                                                 "children": []
                                             },
@@ -225,7 +230,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-10-1_d5ea1042.jpg",
                                                     "image_id": "6246|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 6"
                                                 },
                                                 "children": []
                                             },
@@ -234,7 +240,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-11_3796b41e.jpg",
                                                     "image_id": "5608|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 7"
                                                 },
                                                 "children": []
                                             },
@@ -243,7 +250,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-1-1-scaled_c4e0a9fa.jpg",
                                                     "image_id": "6243|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 8"
                                                 },
                                                 "children": []
                                             },
@@ -252,7 +260,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-2_94a7e3aa.jpg",
                                                     "image_id": "5599|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 9"
                                                 },
                                                 "children": []
                                             },
@@ -261,7 +270,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-3_1a91d6b0.jpg",
                                                     "image_id": "5600|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 10"
                                                 },
                                                 "children": []
                                             },
@@ -270,7 +280,8 @@
                                                 "attrs": {
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/banner-4-1_acf5d7d7.jpg",
                                                     "image_id": "6244|full",
-                                                    "linktarget": "_self"
+                                                    "linktarget": "_self",
+                                                    "alt": "NEVEN Premium Disposable Vape Banner 11"
                                                 },
                                                 "children": []
                                             }
@@ -608,7 +619,8 @@
                                                     "image_id": "5622|full",
                                                     "linktarget": "_self",
                                                     "dynamic_params": "e30=",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20000-dtl-big-cloud-vape-with-led-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20000-dtl-big-cloud-vape-with-led-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 1"
                                                 },
                                                 "children": []
                                             },
@@ -618,7 +630,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Puff-20000_8af4a24f.jpg",
                                                     "image_id": "5631|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20k-dual-mesh-vape-with-animation-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20k-dual-mesh-vape-with-animation-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 2"
                                                 },
                                                 "children": []
                                             },
@@ -628,7 +641,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/puff-18k-tornado-pro_3a84db0d.jpg",
                                                     "image_id": "5630|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-18000-tornado-pro-vape-with-smart-led-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-18000-tornado-pro-vape-with-smart-led-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 3"
                                                 },
                                                 "children": []
                                             },
@@ -638,7 +652,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/a_92ed34ef.jpg",
                                                     "image_id": "5621|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-15k-leather-dtl-shisha-vape-with-led-screen/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-15k-leather-dtl-shisha-vape-with-led-screen/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 4"
                                                 },
                                                 "children": []
                                             },
@@ -648,7 +663,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Digital-Box-12000_b61b46f0.jpg",
                                                     "image_id": "5624|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-cool-digital-box-12000-puffs-disposable-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-cool-digital-box-12000-puffs-disposable-vape/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 5"
                                                 },
                                                 "children": []
                                             },
@@ -658,7 +674,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Puff-12K-Vape_9e929738.jpg",
                                                     "image_id": "5629|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-12000-disposable-vape-with-flashing-neon-light/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-12000-disposable-vape-with-flashing-neon-light/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 6"
                                                 },
                                                 "children": []
                                             },
@@ -668,7 +685,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Bang-King-12000-Puffs_e33abc3e.jpg",
                                                     "image_id": "5623|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/stylish-neven-bang-king-puff-12000-disposable-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/stylish-neven-bang-king-puff-12000-disposable-vape/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 7"
                                                 },
                                                 "children": []
                                             },
@@ -679,7 +697,8 @@
                                                     "image_id": "6248|full",
                                                     "linktarget": "_self",
                                                     "link": "http://localhost/goods.nevenshop.com/products/neven-innovative-puff-12000-disposable-vape-with-lcd-display/",
-                                                    "image_title": "NEVEN Innovative Puff 12000 Disposable Vape With LCD Display"
+                                                    "image_title": "NEVEN Innovative Puff 12000 Disposable Vape With LCD Display",
+                                                    "alt": "NEVEN Innovative Puff 12000 Disposable Vape With LCD Display"
                                                 },
                                                 "children": []
                                             },
@@ -689,7 +708,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-Mega-PUFF-12000-Hot-Selling-Disposable-Vape-Pen-1_65966a07.jpg",
                                                     "image_id": "5644|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-mega-puff-12000-hot-selling-disposable-vape-pen/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-mega-puff-12000-hot-selling-disposable-vape-pen/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 9"
                                                 },
                                                 "children": []
                                             },
@@ -699,7 +719,8 @@
                                                     "linktarget": "_self",
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-Puff-10000-Dual-Color-Disposable-Vape-With-Rotary-Base-1_e19b870e.jpg",
                                                     "image_id": "5645|full",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-10000-dual-color-disposable-vape-with-rotary-base/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-10000-dual-color-disposable-vape-with-rotary-base/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 10"
                                                 },
                                                 "children": []
                                             },
@@ -709,7 +730,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-TWINS-PUFF-300001_2712aaaf.jpg",
                                                     "image_id": "5646|full",
                                                     "linktarget": "_self",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-x2-twins-puff-30000-dual-flavor-crystal-vape-with-led-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-x2-twins-puff-30000-dual-flavor-crystal-vape-with-led-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 11"
                                                 },
                                                 "children": []
                                             }
@@ -1361,7 +1383,8 @@
                                                     "linktarget": "_self",
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/a_92ed34ef.jpg",
                                                     "image_id": "5621|full",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-15k-leather-dtl-shisha-vape-with-led-screen/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-15k-leather-dtl-shisha-vape-with-led-screen/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 12"
                                                 },
                                                 "children": []
                                             },
@@ -1372,7 +1395,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-Puff-8000-Hot-selling-Eco-friendly-Pod-Kit-Vape-81_f07fd8ff.jpg",
                                                     "image_id": "5838|full",
                                                     "image_title": " NEVEN Puff 8000 Hot-selling Eco-friendly Pod Kit Vape",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-8000-hot-selling-eco-friendly-pod-kit-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-8000-hot-selling-eco-friendly-pod-kit-vape/",
+                                                    "alt": "NEVEN Puff 8000 Hot-selling Eco-friendly Pod Kit Vape"
                                                 },
                                                 "children": []
                                             },
@@ -1383,7 +1407,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-Puff-7000-Fun-Dual-Flavor-Disposable-Vape-1_793ff54a.jpg",
                                                     "image_id": "5859|full",
                                                     "image_title": " NEVEN Puff 7000 Fun Dual-Flavor Disposable Vape",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-7000-fun-dual-flavor-disposable-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-7000-fun-dual-flavor-disposable-vape/",
+                                                    "alt": "NEVEN Puff 7000 Fun Dual-Flavor Disposable Vape"
                                                 },
                                                 "children": []
                                             },
@@ -1394,7 +1419,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-BC5000-Luxury-and-Elegant-Golden-Disposable-Vape-21_9722ef5f.jpg",
                                                     "image_id": "5886|full",
                                                     "image_title": " NEVEN Puff 5000 Luxury and Elegant Golden Disposable Vape",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-5000-luxury-and-elegant-golden-disposable-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-5000-luxury-and-elegant-golden-disposable-vape/",
+                                                    "alt": "NEVEN Puff 5000 Luxury and Elegant Golden Disposable Vape"
                                                 },
                                                 "children": []
                                             },
@@ -1405,7 +1431,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NV4000-8_b825f35b.jpg",
                                                     "image_id": "5926|full",
                                                     "image_title": " NEVEN Puff 4000 Stylish Replaceable Pod Kit Vape",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-4000-stylish-replaceable-pod-kit-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-4000-stylish-replaceable-pod-kit-vape/",
+                                                    "alt": "NEVEN Puff 4000 Stylish Replaceable Pod Kit Vape"
                                                 },
                                                 "children": []
                                             },
@@ -1416,7 +1443,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-PUFF-800-Classic-Disposable-Vape-Upgraded-Version-2023-19_87c25de7.jpg",
                                                     "image_id": "5968|full",
                                                     "image_title": "NEVEN Puff 800 Classic Disposable Vape Upgraded Version 2023",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-800-classic-disposable-vape-upgraded-version-2023/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-800-classic-disposable-vape-upgraded-version-2023/",
+                                                    "alt": "NEVEN Puff 800 Classic Disposable Vape Upgraded Version 2023"
                                                 },
                                                 "children": []
                                             },
@@ -1427,7 +1455,8 @@
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Economic-Replaceable-Cartridge-81_98aa4256.jpg",
                                                     "image_id": "6175|full",
                                                     "image_title": "NEVEN Puff 600 Trending Prefilled Pod Kit Vape",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-600-trending-prefilled-pod-kit-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-600-trending-prefilled-pod-kit-vape/",
+                                                    "alt": "NEVEN Puff 600 Trending Prefilled Pod Kit Vape"
                                                 },
                                                 "children": []
                                             },
@@ -1438,7 +1467,8 @@
                                                     "image_id": "5997|full",
                                                     "linktarget": "_self",
                                                     "image_title": "NEVEN Puff 600 Crystal Box Charming Disposable Vape",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-600-crystal-box-charming-disposable-vape/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-600-crystal-box-charming-disposable-vape/",
+                                                    "alt": "NEVEN Puff 600 Crystal Box Charming Disposable Vape"
                                                 },
                                                 "children": []
                                             },
@@ -1448,7 +1478,8 @@
                                                     "linktarget": "_self",
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/NEVEN-TWINS-PUFF-300001_2712aaaf.jpg",
                                                     "image_id": "5646|full",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-x2-twins-puff-30000-dual-flavor-crystal-vape-with-led-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-x2-twins-puff-30000-dual-flavor-crystal-vape-with-led-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 20"
                                                 },
                                                 "children": []
                                             },
@@ -1458,7 +1489,8 @@
                                                     "linktarget": "_self",
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Adalya-Style-Puff-20k_2ff47e23.jpg",
                                                     "image_id": "5622|full",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20000-dtl-big-cloud-vape-with-led-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20000-dtl-big-cloud-vape-with-led-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 21"
                                                 },
                                                 "children": []
                                             },
@@ -1468,7 +1500,8 @@
                                                     "linktarget": "_self",
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/Puff-20000_8af4a24f.jpg",
                                                     "image_id": "5631|full",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20k-dual-mesh-vape-with-animation-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-20k-dual-mesh-vape-with-animation-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 22"
                                                 },
                                                 "children": []
                                             },
@@ -1478,7 +1511,8 @@
                                                     "linktarget": "_self",
                                                     "image": "http://localhost/goods.nevenshop.com/wp-content/manus-storage/puff-18k-tornado-pro_3a84db0d.jpg",
                                                     "image_id": "5630|full",
-                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-18000-tornado-pro-vape-with-smart-led-display/"
+                                                    "link": "http://localhost/goods.nevenshop.com/products/neven-puff-18000-tornado-pro-vape-with-smart-led-display/",
+                                                    "alt": "NEVEN Puff Disposable Vape Product 23"
                                                 },
                                                 "children": []
                                             }
@@ -1760,7 +1794,8 @@
                                             "filter_saturation_hover": "100",
                                             "filter_brightness_hover": "100",
                                             "filter_contrast_hover": "100",
-                                            "filter_opacity_hover": "100"
+                                            "filter_opacity_hover": "100",
+                                            "alt": "NEVEN Premium Disposable Vape Featured Product"
                                         },
                                         "children": [
                                             {

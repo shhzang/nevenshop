@@ -4,6 +4,7 @@ interface ImageCarouselProps {
   images: string[];
   links?: string[];
   alt?: string;
+  alts?: string[];
   autoPlay?: boolean;
   interval?: number;
   showNav?: boolean;
@@ -16,6 +17,7 @@ export default function NvImageCarousel({
   images,
   links = [],
   alt = '',
+  alts = [],
   autoPlay = true,
   interval = 4000,
   showNav = true,
@@ -136,10 +138,11 @@ export default function NvImageCarousel({
               .map((src, i) => {
                 const globalIndex = slideIndex * safeColumns + i;
                 const link = links[globalIndex];
+                const altText = alts[globalIndex] || (alt ? `${alt} ${globalIndex + 1}` : '');
                 const img = (
                   <img
                     src={src}
-                    alt={alt ? `${alt} ${globalIndex + 1}` : ''}
+                    alt={altText}
                     style={{
                       width: '100%',
                       height: '100%',
