@@ -8,6 +8,7 @@ import NvHomePage from "./pages/NvHomePage";
 import NvProductsPage from "./pages/NvProductsPage";
 import NvProductDetailPage from "./pages/NvProductDetailPage";
 import NvStaticPage from "./pages/NvStaticPage";
+import NvBlogPage from "./pages/NvBlogPage";
 import NvNotFoundPage from "./pages/NvNotFoundPage";
 import AdminInquiriesPage from "./pages/AdminInquiriesPage";
 import AdminGuard from "./components/AdminGuard";
@@ -49,6 +50,14 @@ function NvRouter() {
         {(params) => (
           <NvLayout>
             <NvStaticPage />
+          </NvLayout>
+        )}
+      </Route>
+
+      <Route path="/:lang/blog">
+        {(params) => (
+          <NvLayout>
+            <NvBlogPage />
           </NvLayout>
         )}
       </Route>

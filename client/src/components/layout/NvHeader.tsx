@@ -19,7 +19,7 @@ export default function NvHeader() {
   const NAV_ITEMS = [
     { label: t('Home'), path: '/' },
     { label: t('Products'), path: '/products' },
-    { label: t('News'), path: '/page/news' },
+    { label: t('Blog'), path: '/blog' },
     { label: t('FAQS'), path: '/page/faq' },
     { label: t('About Us'), path: '/page/about-us' },
     { label: t('Contact Us'), path: '/page/contact' },
