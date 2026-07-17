@@ -4,6 +4,23 @@
     "slug": "choosing-disposable-vapes",
     "date": "2026-07-15",
     "featured_image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663294439931/eCDYy3jyEJeLbj6jCGSnx8/blog-1-featured-hhHo9DU4qszcHNbwFpjg4Z.webp",
+    "seo": {
+      "en": {
+        "title": "How to Choose the Perfect Disposable Vape | NEVEN Guide 2026",
+        "description": "Complete guide to choosing disposable vapes. Learn about puff counts, nicotine strength, flavors, and how to select the best vape for your needs.",
+        "keywords": "disposable vape, how to choose vape, best disposable vapes, vape guide, NEVEN vapes, puff count, nicotine strength"
+      },
+      "de": {
+        "title": "So wählen Sie die perfekte Einweg-E-Zigarette | NEVEN Leitfaden 2026",
+        "description": "Vollständiger Leitfaden zur Auswahl von Einweg-E-Zigaretten. Erfahren Sie mehr über Zuganzahl, Nikotinstärke, Geschmacksrichtungen und wie Sie die beste E-Zigarette auswählen.",
+        "keywords": "Einweg-E-Zigarette, E-Zigarette wählen, beste Einweg-E-Zigaretten, Vaping-Leitfaden, NEVEN E-Zigaretten"
+      },
+      "ar": {
+        "title": "كيفية اختيار السيجارة الإلكترونية المثالية | دليل NEVEN 2026",
+        "description": "دليل شامل لاختيار السجائر الإلكترونية. تعرف على عدد النفخات وتركيز النيكوتين والنكهات وكيفية اختيار أفضل سيجارة إلكترونية.",
+        "keywords": "سيجارة إلكترونية، اختيار السيجارة الإلكترونية، أفضل السجائر الإلكترونية، دليل التدخين الإلكتروني"
+      }
+    },
     "translations": {
       "en": {
         "title": "How to Choose the Perfect Disposable Vape",
@@ -27,6 +44,23 @@
     "slug": "vape-health-safety",
     "date": "2026-07-10",
     "featured_image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663294439931/eCDYy3jyEJeLbj6jCGSnx8/blog-2-featured-T3AqXx8nf4E9AZaMJtcvsq.webp",
+    "seo": {
+      "en": {
+        "title": "Vape Health & Safety Guide | Everything You Need to Know",
+        "description": "Learn about vape health considerations, safety practices, and environmental responsibility. Get facts about nicotine, tar, and carbon monoxide in vaping.",
+        "keywords": "vape health, vape safety, is vaping safe, vape health effects, disposable vape safety, environmental responsibility, vape recycling"
+      },
+      "de": {
+        "title": "Leitfaden zur Gesundheit und Sicherheit beim Dampfen | Alles, was Sie wissen müssen",
+        "description": "Erfahren Sie mehr über Gesundheitsaspekte beim Dampfen, Sicherheitspraktiken und Umweltverantwortung. Erhalten Sie Fakten über Nikotin und Dampfen.",
+        "keywords": "Dampfen Gesundheit, Dampfen Sicherheit, ist Dampfen sicher, Dampfen Gesundheitseffekte, Umweltverantwortung"
+      },
+      "ar": {
+        "title": "دليل صحة وسلامة التدخين الإلكتروني | كل ما تحتاج إلى معرفته",
+        "description": "تعرف على اعتبارات صحة التدخين الإلكتروني والممارسات الآمنة والمسؤولية البيئية. احصل على حقائق عن النيكوتين والتدخين الإلكتروني.",
+        "keywords": "صحة التدخين الإلكتروني، سلامة التدخين الإلكتروني، هل التدخين الإلكتروني آمن، تأثيرات التدخين الإلكتروني"
+      }
+    },
     "translations": {
       "en": {
         "title": "Understanding Vape Health & Safety",
@@ -50,6 +84,23 @@
     "slug": "neven-product-innovation",
     "date": "2026-07-05",
     "featured_image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663294439931/eCDYy3jyEJeLbj6jCGSnx8/blog-3-featured-5fZhVfQDbssiyUgV5ZQcx8.webp",
+    "seo": {
+      "en": {
+        "title": "NEVEN's Latest Product Innovations | Next Generation Vaping Technology",
+        "description": "Discover NEVEN's cutting-edge vaping technology. Learn about LED displays, mesh coils, rechargeable batteries, and smart protection features.",
+        "keywords": "NEVEN vapes, vape innovation, LED display vape, mesh coil vape, rechargeable vape, smart vape technology, disposable vape features"
+      },
+      "de": {
+        "title": "NEVENs neueste Produktinnovationen | Technologie der nächsten Generation",
+        "description": "Entdecken Sie die hochmoderne Dampftechnologie von NEVEN. Erfahren Sie mehr über LED-Displays, Mesh-Spulen und intelligente Schutzfunktionen.",
+        "keywords": "NEVEN Dampfer, Dampf-Innovation, LED-Display Dampfer, Mesh-Spulen Dampfer, wiederaufladbare Dampfer"
+      },
+      "ar": {
+        "title": "أحدث ابتكارات منتجات NEVEN | تكنولوجيا التدخين الإلكتروني من الجيل التالي",
+        "description": "اكتشف تكنولوجيا التدخين الإلكتروني المتقدمة من NEVEN. تعرف على شاشات LED والملفات الشبكية والميزات الذكية.",
+        "keywords": "سجائر NEVEN الإلكترونية، ابتكار التدخين الإلكتروني، سيجارة إلكترونية بشاشة LED، تكنولوجيا ذكية"
+      }
+    },
     "translations": {
       "en": {
         "title": "NEVEN's Latest Product Innovations",
