@@ -29,7 +29,7 @@ export function generateOrganizationSchema(options: StructuredDataOptions) {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      email: 'support@neven.bar',
+      email: 'neven6000@gmail.com',
       url: `${options.baseUrl}/contact`,
     },
     address: {
