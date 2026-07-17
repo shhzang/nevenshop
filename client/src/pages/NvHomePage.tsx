@@ -3,6 +3,7 @@ import { usePage } from '../hooks/useProductData';
 import ContentBlockRenderer from '../components/page/ContentBlockRenderer';
 import ContactBar from '../components/ContactBar';
 import SocialShareBar from '../components/SocialShareBar';
+import BlogSection from '../components/BlogSection';
 
 export default function NvHomePage() {
   const { currentLang } = useLanguage();
@@ -21,6 +22,8 @@ export default function NvHomePage() {
       ) : homePage?.content_blocks?.length ? (
         <>
           <ContentBlockRenderer blocks={homePage.content_blocks} lang={currentLang} />
+          {/* Blog Section */}
+          <BlogSection />
           {/* Contact and Social Share Section */}
           <div className="bg-gray-50 py-12 px-4">
             <div className="container-site max-w-4xl mx-auto">
