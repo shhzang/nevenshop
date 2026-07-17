@@ -20,7 +20,7 @@ export function generateOrganizationSchema(options: StructuredDataOptions) {
     logo: `${options.baseUrl}/manus-storage/logo-black_f44d892e.png`,
     description: 'Premium NEVEN disposable vapes with exceptional flavor and quality',
     sameAs: [
-      'https://www.facebook.com/nevenshop',
+      'https://www.facebook.com/lakeisha.newman.2025',
       'https://www.instagram.com/nevenshop',
       'https://www.tiktok.com/@nevenshop',
       'https://www.youtube.com/@nevenshop',
