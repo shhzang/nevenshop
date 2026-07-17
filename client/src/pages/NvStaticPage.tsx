@@ -3,6 +3,8 @@ import { useLanguage, useTranslations } from '../hooks/useTranslations';
 import { usePage } from '../hooks/useProductData';
 import ContentBlockRenderer from '../components/page/ContentBlockRenderer';
 import NvBreadcrumbs from '../components/ui/NvBreadcrumbs';
+import ContactBar from '../components/ContactBar';
+import SocialShareBar from '../components/SocialShareBar';
 
 export default function NvStaticPage() {
   const params = useParams<{ slug: string }>();
@@ -45,6 +47,21 @@ export default function NvStaticPage() {
           )}
         </div>
       </section>
+      {/* Contact and Social Share Section */}
+      <div className="bg-gray-50 py-12 px-4">
+        <div className="container-site max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Need More Information?</h3>
+              <ContactBar variant="block" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Share This Page</h3>
+              <SocialShareBar variant="block" />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
