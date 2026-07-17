@@ -1,4 +1,11 @@
 import { getPageBySlug } from './data-store';
+import {
+  generateOrganizationSchema,
+  generateBreadcrumbSchema,
+  generateWebPageSchema,
+  generateLocalBusinessSchema,
+  wrapInScriptTag,
+} from './structured-data';
 
 interface SEOMetadata {
   title: string;
@@ -21,19 +28,58 @@ export async function getHomepageSEO(): Promise<SEOMetadata> {
 }
 
 /**
+ * 生成首页的 JSON-LD 结构化数据
+ */
+export function generateHomepageStructuredData(baseUrl: string): string {
+  // Organization schema
+  const orgSchema = generateOrganizationSchema({ baseUrl });
+  
+  // Breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema(
+    [
+      { name: 'Home', url: baseUrl },
+    ],
+    { baseUrl }
+  );
+  
+  // WebPage schema
+  const webPageSchema = generateWebPageSchema(
+    {
+      title: 'NevenShopper — Premium Disposable Vapes',
+      description: 'Discover premium NEVEN disposable vapes with exceptional flavor and quality. Browse our collection of high-quality vaping products.',
+      url: baseUrl,
+      image: `${baseUrl}/manus-storage/logo-black_f44d892e.png`,
+    },
+    { baseUrl }
+  );
+  
+  // Combine all schemas
+  const schemas = [
+    wrapInScriptTag(orgSchema),
+    wrapInScriptTag(breadcrumbSchema),
+    wrapInScriptTag(webPageSchema),
+  ];
+  
+  return schemas.join('\n');
+}
+
+/**
  * 注入 SEO 元数据到 HTML 模板
  */
-export function injectSEOMetadata(html: string, seo: SEOMetadata): string {
+export function injectSEOMetadata(html: string, seo: SEOMetadata, baseUrl?: string): string {
   // 注入 H1 标题到 root div 之前（作为隐藏的 SEO 元素）
   const h1Html = `<h1 style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">${escapeHtml(seo.h1Title)}</h1>`;
   
   // 生成图片 SEO HTML
   const imageHtml = generateImageSEOHtml();
   
+  // 生成 JSON-LD 结构化数据
+  const structuredData = baseUrl ? generateHomepageStructuredData(baseUrl) : '';
+  
   // 替换 root div 的位置
   const modifiedHtml = html.replace(
     '<div id="root"></div>',
-    `${h1Html}${imageHtml}<div id="root"></div>`
+    `${h1Html}${imageHtml}${structuredData}<div id="root"></div>`
   );
 
   return modifiedHtml;

@@ -1,0 +1,20 @@
+# Robots.txt for neven.bar
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://neven.bar/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

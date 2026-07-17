@@ -43,7 +43,10 @@ export async function setupVite(app: Express, server: Server) {
       // Inject SEO metadata for homepage
       if (url === '/' || url === '/en' || url === '/de' || url === '/ar') {
         const seo = await getHomepageSEO();
-        template = injectSEOMetadata(template, seo);
+        const protocol = req.protocol || 'https';
+        const host = req.get('host') || 'neven.bar';
+        const baseUrl = `${protocol}://${host}`;
+        template = injectSEOMetadata(template, seo, baseUrl);
       }
       
       const page = await vite.transformIndexHtml(url, template);
@@ -76,7 +79,10 @@ export async function serveStatic(app: Express) {
     // Inject SEO metadata for homepage
     if (_req.originalUrl === '/' || _req.originalUrl === '/en' || _req.originalUrl === '/de' || _req.originalUrl === '/ar') {
       const seo = await getHomepageSEO();
-      html = injectSEOMetadata(html, seo);
+      const protocol = _req.protocol || 'https';
+      const host = _req.get('host') || 'neven.bar';
+      const baseUrl = `${protocol}://${host}`;
+      html = injectSEOMetadata(html, seo, baseUrl);
     }
     
     res.set({ "Content-Type": "text/html" }).send(html);

@@ -113,27 +113,40 @@ router.get('/sitemap.xml', (_req: Request, res: Response) => {
   const langs = ['en', 'de', 'ar'];
   const products = getProducts();
   const pages = getPages();
-  const baseUrl = 'https://nevenshop.manus.space';
+  
+  // Support multiple domain names
+  const host = _req.get('host') || 'neven.bar';
+  const protocol = _req.protocol || 'https';
+  const baseUrl = `${protocol}://${host}`;
 
   const urls: string[] = [];
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 
   for (const lang of langs) {
-    urls.push(`<url><loc>${baseUrl}/${lang}</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`);
-    urls.push(`<url><loc>${baseUrl}/${lang}/products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`);
+    // Homepage
+    urls.push(`<url><loc>${baseUrl}/${lang}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`);
+    
+    // Products listing page
+    urls.push(`<url><loc>${baseUrl}/${lang}/products</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`);
+    
+    // Individual products
     for (const p of products) {
-      urls.push(`<url><loc>${baseUrl}/${lang}/products/${p.slug}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
+      urls.push(`<url><loc>${baseUrl}/${lang}/products/${p.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
     }
+    
+    // Static pages
     for (const pg of pages) {
-      urls.push(`<url><loc>${baseUrl}/${lang}/page/${pg.slug}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`);
+      urls.push(`<url><loc>${baseUrl}/${lang}/page/${pg.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`);
     }
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls.join('\n')}
 </urlset>`;
 
-  res.set('Content-Type', 'application/xml');
+  res.set('Content-Type', 'application/xml; charset=utf-8');
   res.send(xml);
 });
 
