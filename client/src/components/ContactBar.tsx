@@ -1,5 +1,6 @@
 import { Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { contactEvents, conversionEvents } from '@/lib/analytics';
 
 interface ContactBarProps {
   email?: string;
@@ -15,11 +16,15 @@ export default function ContactBar({
   className = '',
 }: ContactBarProps) {
   const handleEmailClick = () => {
+    contactEvents.emailContactClick(variant);
+    conversionEvents.initiateContact('email');
     window.location.href = `mailto:${email}`;
   };
 
   const handlePhoneClick = () => {
     if (phone) {
+      contactEvents.emailContactClick(variant);
+      conversionEvents.initiateContact('phone');
       window.location.href = `tel:${phone}`;
     }
   };

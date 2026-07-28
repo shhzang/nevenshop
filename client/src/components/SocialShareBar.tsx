@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Twitter, Linkedin, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { socialEvents } from '@/lib/analytics';
 
 interface SocialShareBarProps {
   url?: string;
@@ -27,6 +28,7 @@ export default function SocialShareBar({
   };
 
   const handleShare = (platform: string, link: string) => {
+    socialEvents.shareClick(platform, variant);
     if (platform === 'instagram') {
       window.open(link, '_blank', 'width=600,height=600');
     } else {
@@ -37,6 +39,7 @@ export default function SocialShareBar({
   const handleNativeShare = async () => {
     if (navigator.share) {
       try {
+        socialEvents.nativeShare('native', variant);
         await navigator.share({
           title,
           text: description,
@@ -54,24 +57,28 @@ export default function SocialShareBar({
       label: 'Facebook',
       onClick: () => handleShare('facebook', socialLinks.facebook),
       color: 'hover:text-blue-600',
+      platform: 'facebook',
     },
     {
       icon: Twitter,
       label: 'Twitter',
       onClick: () => handleShare('twitter', socialLinks.twitter),
       color: 'hover:text-blue-400',
+      platform: 'twitter',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       onClick: () => handleShare('linkedin', socialLinks.linkedin),
       color: 'hover:text-blue-700',
+      platform: 'linkedin',
     },
     {
       icon: Instagram,
       label: 'Instagram',
       onClick: () => handleShare('instagram', socialLinks.instagram),
       color: 'hover:text-pink-600',
+      platform: 'instagram',
     },
   ];
 

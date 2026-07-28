@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import type { Product } from '../../../../shared/nevenshop-types';
 import { useLanguage } from '../../hooks/useTranslations';
+import { productEvents } from '../../lib/analytics';
 
 interface ProductCardProps {
   product: Product;
@@ -13,9 +14,18 @@ export default function ProductCard({ product }: ProductCardProps) {
     ? product.thumbnail
     : (typeof product.images?.[0] === 'string' ? product.images[0] : '') || '/manus-storage/woocommerce-placeholder_d83d7d50.png';
 
+  const handleProductClick = () => {
+    productEvents.clickProduct(
+      String(product.id || product.slug),
+      product.title,
+      'products_page'
+    );
+  };
+
   return (
     <Link
       to={`/${currentLang}/products/${product.slug}`}
+      onClick={handleProductClick}
       style={{
         display: 'block',
         borderRadius: 8,
