@@ -64,6 +64,6 @@
 - [x] 统一 YouTube 主页链接
 - [x] 核对 Facebook、Twitter/X、LinkedIn 动态分享链接
 - [x] 编译并逐页验证联系方式
-- [ ] 保存 checkpoint
+- [x] 保存 checkpoint
 
 <!-- 本次用户指定的统一配置：电话 +1 (425) 520-729；邮箱 neven6000@gmail.com；Facebook https://www.facebook.com/lakeisha.newman.2025；Instagram https://www.instagram.com/nevenshopper/；YouTube https://www.youtube.com/@nevenshopper；Facebook 分享 https://www.facebook.com/sharer/sharer.php?u=页面URL；Twitter/X 分享 https://twitter.com/intent/tweet?url=页面URL&text=文章标题；LinkedIn 分享 https://www.linkedin.com/sharing/share-offsite/?url=页面URL -->
