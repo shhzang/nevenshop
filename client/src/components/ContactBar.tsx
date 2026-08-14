@@ -1,6 +1,7 @@
 import { Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { contactEvents, conversionEvents } from '@/lib/analytics';
+import { SITE_CONTACT } from '@shared/contact-info';
 
 interface ContactBarProps {
   email?: string;
@@ -10,8 +11,8 @@ interface ContactBarProps {
 }
 
 export default function ContactBar({
-  email = 'neven6000@gmail.com',
-  phone,
+  email = SITE_CONTACT.email,
+  phone = SITE_CONTACT.phone,
   variant = 'inline',
   className = '',
 }: ContactBarProps) {

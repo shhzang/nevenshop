@@ -3,6 +3,8 @@
  * Generates Schema.org compliant JSON-LD for various page types
  */
 
+import { SITE_CONTACT } from '@shared/contact-info';
+
 export interface StructuredDataOptions {
   baseUrl: string;
   lang?: string;
@@ -20,16 +22,17 @@ export function generateOrganizationSchema(options: StructuredDataOptions) {
     logo: `${options.baseUrl}/manus-storage/logo-black_f44d892e.png`,
     description: 'Premium NEVEN disposable vapes with exceptional flavor and quality',
     sameAs: [
-      'https://www.facebook.com/lakeisha.newman.2025',
-      'https://www.instagram.com/nevenshop',
-      'https://www.tiktok.com/@nevenshop',
-      'https://www.youtube.com/@nevenshop',
-      'https://www.linkedin.com/company/nevenshop',
+      SITE_CONTACT.social.facebook,
+      SITE_CONTACT.social.instagram,
+      SITE_CONTACT.social.tiktok,
+      SITE_CONTACT.social.youtube,
+      SITE_CONTACT.social.linkedin,
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      email: 'neven6000@gmail.com',
+      email: SITE_CONTACT.email,
+      telephone: SITE_CONTACT.phone,
       url: `${options.baseUrl}/contact`,
     },
     address: {
@@ -150,7 +153,7 @@ export function generateLocalBusinessSchema(options: StructuredDataOptions) {
     image: `${options.baseUrl}/manus-storage/logo-black_f44d892e.png`,
     description: 'Premium NEVEN disposable vapes manufacturer and distributor',
     url: options.baseUrl,
-    telephone: '+86-755-XXXXXXXX',
+    telephone: SITE_CONTACT.phone,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Shenzhen, China',

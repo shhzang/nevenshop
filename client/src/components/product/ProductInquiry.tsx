@@ -68,7 +68,7 @@ export default function ProductInquiry({ productTitle }: ProductInquiryProps) {
         </div>
         <div>
           <label style={labelStyle}>{t('Phone')}</label>
-          <input name="phone" style={inputStyle} placeholder="+1 (555) 000-0000" />
+          <input name="phone" style={inputStyle} placeholder={t('Your phone number')} />
         </div>
         <div>
           <label style={labelStyle}>{t('Message *')}</label>

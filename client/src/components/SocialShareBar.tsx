@@ -2,6 +2,7 @@ import { Facebook, Instagram, Twitter, Linkedin, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { socialEvents } from '@/lib/analytics';
+import { SITE_CONTACT, SOCIAL_SHARE_URLS } from '@shared/contact-info';
 
 interface SocialShareBarProps {
   url?: string;
@@ -21,10 +22,10 @@ export default function SocialShareBar({
   showLabels = false,
 }: SocialShareBarProps) {
   const socialLinks = {
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    instagram: 'https://www.instagram.com/nevenshop',
+    facebook: SOCIAL_SHARE_URLS.facebook(url),
+    twitter: SOCIAL_SHARE_URLS.twitter(url, title),
+    linkedin: SOCIAL_SHARE_URLS.linkedin(url),
+    instagram: SITE_CONTACT.social.instagram,
   };
 
   const handleShare = (platform: string, link: string) => {
