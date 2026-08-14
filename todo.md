@@ -67,3 +67,12 @@
 - [x] 保存 checkpoint
 
 <!-- 本次用户指定的统一配置：电话 +1 (425) 520-729；邮箱 neven6000@gmail.com；Facebook https://www.facebook.com/lakeisha.newman.2025；Instagram https://www.instagram.com/nevenshopper/；YouTube https://www.youtube.com/@nevenshopper；Facebook 分享 https://www.facebook.com/sharer/sharer.php?u=页面URL；Twitter/X 分享 https://twitter.com/intent/tweet?url=页面URL&text=文章标题；LinkedIn 分享 https://www.linkedin.com/sharing/share-offsite/?url=页面URL -->
+
+## JSON-LD 联系方式结构化数据
+
+- [x] 在 Organization JSON-LD 中添加最新电话和邮箱
+- [x] 在 ContactPoint JSON-LD 中添加客户服务与销售联系方式
+- [x] 在 LocalBusiness JSON-LD 中添加最新电话和邮箱
+- [x] 验证英文、德文和阿拉伯文主页输出
+- [x] 运行构建、测试和 SEO 校验
+- [x] 保存 checkpoint

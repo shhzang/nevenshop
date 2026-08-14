@@ -28,13 +28,28 @@ export function generateOrganizationSchema(options: StructuredDataOptions) {
       SITE_CONTACT.social.youtube,
       SITE_CONTACT.social.linkedin,
     ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Customer Service',
-      email: SITE_CONTACT.email,
-      telephone: SITE_CONTACT.phone,
-      url: `${options.baseUrl}/contact`,
-    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: SITE_CONTACT.phone,
+        email: SITE_CONTACT.email,
+        areaServed: 'Worldwide',
+        availableLanguage: ['English', 'German', 'Arabic'],
+        url: `${options.baseUrl}/en/page/contact`,
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        telephone: SITE_CONTACT.phone,
+        email: SITE_CONTACT.email,
+        areaServed: 'Worldwide',
+        availableLanguage: ['English', 'German', 'Arabic'],
+        url: `${options.baseUrl}/en/page/contact`,
+      }
+    ],
+    email: SITE_CONTACT.email,
+    telephone: SITE_CONTACT.phone,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CN',
@@ -154,6 +169,8 @@ export function generateLocalBusinessSchema(options: StructuredDataOptions) {
     description: 'Premium NEVEN disposable vapes manufacturer and distributor',
     url: options.baseUrl,
     telephone: SITE_CONTACT.phone,
+    email: SITE_CONTACT.email,
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Shenzhen, China',
