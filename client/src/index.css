@@ -486,3 +486,124 @@ h3 { font-size: var(--h3-size); }
 .skip-link:focus {
   top: 0;
 }
+
+/* =============================================================================
+   Footer contact copy controls
+   ============================================================================= */
+
+.footer-contact-list {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 420px);
+  margin-top: 20px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 8px 10px 8px 12px;
+  border: 1px solid rgba(33, 41, 52, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.footer-contact-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  color: var(--color-awb-6);
+}
+
+.footer-contact-link:hover {
+  color: var(--color-awb-4);
+}
+
+.footer-contact-label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.footer-contact-value {
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.footer-copy-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 74px;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid rgba(33, 41, 52, 0.18);
+  border-radius: 6px;
+  color: var(--color-awb-6);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-copy-button:hover,
+.footer-copy-button:focus-visible {
+  border-color: var(--color-awb-4);
+  color: var(--color-awb-4);
+  background: #fff;
+}
+
+.footer-copy-button:active {
+  transform: scale(0.97);
+}
+
+.footer-copy-button.is-copied {
+  border-color: var(--color-awb-4);
+  color: #fff;
+  background: var(--color-awb-4);
+  animation: footer-copy-success 220ms ease-out;
+}
+
+.footer-copy-status {
+  line-height: 1;
+}
+
+@keyframes footer-copy-success {
+  0% { transform: scale(0.95); opacity: 0.75; }
+  70% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .footer-contact-item {
+    align-items: stretch;
+  }
+
+  .footer-contact-value {
+    font-size: 13px;
+  }
+
+  .footer-copy-button {
+    min-width: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-copy-button,
+  .footer-copy-button.is-copied {
+    animation: none;
+    transition: none;
+  }
+}

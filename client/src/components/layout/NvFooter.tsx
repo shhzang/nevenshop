@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { useLanguage, useTranslations } from '../../hooks/useTranslations';
 import { SITE_CONTACT } from '@shared/contact-info';
+import CopyContactButton from '../CopyContactButton';
 
 const LOGO_BLACK = '/manus-storage/logo-black_f44d892e.png';
 
@@ -147,6 +148,20 @@ export default function NvFooter() {
                 {s.icon}
               </a>
             ))}
+          </div>
+          <div className="footer-contact-list" aria-label="Contact details">
+            <CopyContactButton
+              label="Phone"
+              value={phone}
+              href={`tel:${phone}`}
+              type="phone"
+            />
+            <CopyContactButton
+              label="Email"
+              value={email}
+              href={`mailto:${email}`}
+              type="email"
+            />
           </div>
         </div>
 
