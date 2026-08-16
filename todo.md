@@ -113,4 +113,4 @@
 - [x] 输出 Google Search Console 提交与索引请求清单
 - [x] 验证本地收录入口、规范域名与 Sitemap XML
 - [x] 保存包含收录优化改动的 checkpoint
-- [ ] 发布后核验线上 robots、Sitemap、canonical 与可抓取 HTML
+- [x] 发布后核验线上 robots、Sitemap、canonical 与可抓取 HTML
