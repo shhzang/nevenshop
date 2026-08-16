@@ -25,13 +25,19 @@ interface BlogArticle {
 export function generateBlogArticleSchema(article: BlogArticle, lang: string, baseUrl: string) {
   const translation = article.translations[lang] || article.translations['en'];
   const seoData = article.seo?.[lang] || article.seo?.['en'];
+  const articleUrl = `${baseUrl}/${lang}/blog/${article.slug}`;
+  const imageUrl = article.featured_image?.startsWith('http')
+    ? article.featured_image
+    : article.featured_image
+      ? `${baseUrl}${article.featured_image}`
+      : `${baseUrl}/logo.png`;
   
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: seoData?.title || translation.title,
     description: seoData?.description || translation.excerpt,
-    image: article.featured_image || `${baseUrl}/logo.png`,
+    image: imageUrl,
     datePublished: article.date,
     dateModified: article.date,
     author: {
@@ -50,20 +56,20 @@ export function generateBlogArticleSchema(article: BlogArticle, lang: string, ba
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${baseUrl}/blog/${article.slug}`,
+      '@id': articleUrl,
     },
     articleBody: translation.content,
     keywords: seoData?.keywords || '',
   };
 }
 
-export function generateBlogListingSchema(baseUrl: string) {
+export function generateBlogListingSchema(baseUrl: string, lang = 'en') {
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Blog',
     description: 'Latest articles about vaping, health, safety, and NEVEN products',
-    url: `${baseUrl}/blog`,
+    url: `${baseUrl}/${lang}/blog`,
     publisher: {
       '@type': 'Organization',
       name: 'NEVEN',
@@ -86,19 +92,19 @@ export function generateBreadcrumbSchema(article: BlogArticle, lang: string, bas
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: baseUrl,
+        item: `${baseUrl}/${lang}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: `${baseUrl}/blog`,
+        item: `${baseUrl}/${lang}/blog`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: translation.title,
-        item: `${baseUrl}/blog/${article.slug}`,
+        item: `${baseUrl}/${lang}/blog/${article.slug}`,
       },
     ],
   };

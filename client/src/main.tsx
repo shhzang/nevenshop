@@ -34,3 +34,5 @@ createRoot(document.getElementById("root")!).render(
     </trpc.Provider>
   </StrictMode>
 );
+
+document.querySelectorAll("[data-seo-fallback]").forEach((node) => node.remove());

@@ -39,6 +39,10 @@ async function startServer() {
   registerOAuthRoutes(app);
   // NevenShopper REST API routes
   app.use('/api', nevenshopRoutes);
+  // Keep the public sitemap at the conventional root URL while the generator lives with API routes.
+  app.get('/sitemap.xml', (_req, res) => {
+    res.redirect(301, '/api/sitemap.xml');
+  });
   // tRPC API
   app.use(
     "/api/trpc",

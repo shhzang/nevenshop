@@ -1,6 +1,7 @@
 import { publicProcedure, router } from '../_core/trpc';
 import * as fs from 'fs';
 import * as path from 'path';
+import { z } from 'zod';
 
 // Load blog data
 function loadBlogData() {
@@ -19,8 +20,8 @@ export const blogRouter = router({
     return loadBlogData();
   }),
 
-  getBySlug: publicProcedure.query(({ input }: any) => {
+  getBySlug: publicProcedure.input(z.object({ slug: z.string().min(1) })).query(({ input }) => {
     const blogs = loadBlogData();
-    return blogs.find((blog: any) => blog.slug === input?.slug);
+    return blogs.find((blog: any) => blog.slug === input.slug);
   }),
 });

@@ -6,6 +6,30 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getHomepageSEO, injectSEOMetadata } from "../ssr-helper";
+import { getBlogArticleBySlug, injectBlogArticleSEO, injectBlogListingSEO } from "../blog-seo";
+
+async function injectRouteSEO(html: string, originalUrl: string, protocol: string, host: string): Promise<string> {
+  const pathname = originalUrl.split("?")[0].replace(/\/$/, "") || "/";
+  const baseUrl = `${protocol}://${host}`;
+  const blogArticleMatch = pathname.match(/^\/(en|de|ar)\/blog\/([^/]+)$/);
+  const blogListingMatch = pathname.match(/^\/(en|de|ar)\/blog$/);
+
+  if (blogArticleMatch) {
+    const [, lang, slug] = blogArticleMatch;
+    const article = getBlogArticleBySlug(slug);
+    return article ? injectBlogArticleSEO(html, article, lang, baseUrl) : html;
+  }
+
+  if (blogListingMatch) {
+    return injectBlogListingSEO(html, blogListingMatch[1], baseUrl);
+  }
+
+  if (pathname === "/" || pathname === "/en" || pathname === "/de" || pathname === "/ar") {
+    return injectSEOMetadata(html, await getHomepageSEO(), baseUrl);
+  }
+
+  return html;
+}
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -40,14 +64,12 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`
       );
       
-      // Inject SEO metadata for homepage
-      if (url === '/' || url === '/en' || url === '/de' || url === '/ar') {
-        const seo = await getHomepageSEO();
-        const protocol = req.protocol || 'https';
-        const host = req.get('host') || 'neven.bar';
-        const baseUrl = `${protocol}://${host}`;
-        template = injectSEOMetadata(template, seo, baseUrl);
-      }
+      template = await injectRouteSEO(
+        template,
+        url,
+        req.protocol || "https",
+        req.get("host") || "neven.bar"
+      );
       
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
@@ -76,14 +98,12 @@ export async function serveStatic(app: Express) {
     const indexPath = path.resolve(distPath, "index.html");
     let html = await fs.promises.readFile(indexPath, "utf-8");
     
-    // Inject SEO metadata for homepage
-    if (_req.originalUrl === '/' || _req.originalUrl === '/en' || _req.originalUrl === '/de' || _req.originalUrl === '/ar') {
-      const seo = await getHomepageSEO();
-      const protocol = _req.protocol || 'https';
-      const host = _req.get('host') || 'neven.bar';
-      const baseUrl = `${protocol}://${host}`;
-      html = injectSEOMetadata(html, seo, baseUrl);
-    }
+    html = await injectRouteSEO(
+      html,
+      _req.originalUrl,
+      _req.protocol || "https",
+      _req.get("host") || "neven.bar"
+    );
     
     res.set({ "Content-Type": "text/html" }).send(html);
   });

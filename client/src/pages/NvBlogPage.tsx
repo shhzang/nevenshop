@@ -1,6 +1,7 @@
 import { useLanguage } from '@/hooks/useTranslations';
 import { trpc } from '@/lib/trpc';
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 
 interface BlogArticle {
   id: number;
@@ -144,7 +145,7 @@ export default function NvBlogPage() {
             </p>
           </div>
         ) : (
-          <div className="space-y-8">
+          <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
             {(blogs as BlogArticle[]).map((blog) => {
               const translation = blog.translations[currentLang] || blog.translations['en'];
               const seoData = blog.seo?.[currentLang] || blog.seo?.['en'];
@@ -159,40 +160,30 @@ export default function NvBlogPage() {
                   key={blog.id}
                   className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+                  <div className="flex h-full flex-col p-5">
                     {/* Featured Image */}
                     {blog.featured_image && (
-                      <div className="md:col-span-1">
+                      <Link href={`/${currentLang}/blog/${blog.slug}`} className="block overflow-hidden rounded-lg">
                         <img
                           src={blog.featured_image}
                           alt={translation.title}
-                          className="w-full h-48 object-cover rounded-lg"
+                          className="h-48 w-full object-cover transition duration-300 hover:scale-[1.02]"
                         />
-                      </div>
+                      </Link>
                     )}
 
                     {/* Content */}
-                    <div className={blog.featured_image ? 'md:col-span-2' : 'md:col-span-3'}>
+                    <div className="flex flex-1 flex-col pt-5">
                       <div className="text-sm text-gray-500 mb-2">{formattedDate}</div>
-                      <h2 className="text-2xl font-bold mb-3 text-gray-900">{translation.title}</h2>
-                      <p className="text-gray-600 mb-4 line-clamp-3">{translation.excerpt}</p>
-
-                      {/* Full Content */}
-                      <div className="prose prose-sm max-w-none text-gray-700 mb-4">
-                        {translation.content.split('\n\n').map((paragraph: string, idx: number) => (
-                          <p key={idx} className="mb-3 text-sm leading-relaxed">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-
-                      {/* SEO Keywords */}
-                      {seoData?.keywords && (
-                        <div className="text-xs text-gray-400 mt-4 pt-4 border-t border-gray-200">
-                          <span className="font-semibold">Keywords: </span>
-                          {seoData.keywords}
-                        </div>
-                      )}
+                      <h2 className="text-2xl font-bold mb-3 text-gray-900">
+                        <Link href={`/${currentLang}/blog/${blog.slug}`} className="hover:underline">
+                          {translation.title}
+                        </Link>
+                      </h2>
+                      <p className="text-gray-600 mb-5 line-clamp-3">{translation.excerpt}</p>
+                      <Link href={`/${currentLang}/blog/${blog.slug}`} className="mt-auto inline-flex w-fit font-semibold text-gray-900 underline decoration-gray-400 underline-offset-4 hover:decoration-gray-900">
+                        {currentLang === 'ar' ? 'اقرأ المقال' : currentLang === 'de' ? 'Artikel lesen' : 'Read article'}
+                      </Link>
                     </div>
                   </div>
                 </article>

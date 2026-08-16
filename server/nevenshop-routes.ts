@@ -10,6 +10,7 @@ import {
   getMenus,
   getDesignTokens,
 } from './data-store';
+import { getBlogArticles } from './blog-seo';
 
 const router = Router();
 
@@ -113,6 +114,7 @@ router.get('/sitemap.xml', (_req: Request, res: Response) => {
   const langs = ['en', 'de', 'ar'];
   const products = getProducts();
   const pages = getPages();
+  const blogArticles = getBlogArticles();
   
   // Support multiple domain names
   const host = _req.get('host') || 'neven.bar';
@@ -137,6 +139,20 @@ router.get('/sitemap.xml', (_req: Request, res: Response) => {
     // Static pages
     for (const pg of pages) {
       urls.push(`<url><loc>${baseUrl}/${lang}/page/${pg.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`);
+    }
+
+    // Blog listing and independently crawlable article pages
+    urls.push(`<url><loc>${baseUrl}/${lang}/blog</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`);
+    for (const article of blogArticles) {
+      const imageUrl = article.featured_image?.startsWith('http')
+        ? article.featured_image
+        : article.featured_image
+          ? `${baseUrl}${article.featured_image}`
+          : '';
+      const imageXml = imageUrl
+        ? `<image:image><image:loc>${imageUrl}</image:loc><image:title>${article.translations[lang]?.title || article.translations.en.title}</image:title></image:image>`
+        : '';
+      urls.push(`<url><loc>${baseUrl}/${lang}/blog/${article.slug}</loc><lastmod>${article.date || today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>${imageXml}</url>`);
     }
   }
 
