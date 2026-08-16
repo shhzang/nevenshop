@@ -11,6 +11,7 @@ import {
   getDesignTokens,
 } from './data-store';
 import { getBlogArticles } from './blog-seo';
+import { escapeXml, PRIMARY_SITE_URL } from './seo-config';
 
 const router = Router();
 
@@ -116,33 +117,31 @@ router.get('/sitemap.xml', (_req: Request, res: Response) => {
   const pages = getPages();
   const blogArticles = getBlogArticles();
   
-  // Support multiple domain names
-  const host = _req.get('host') || 'neven.bar';
-  const protocol = _req.protocol || 'https';
-  const baseUrl = `${protocol}://${host}`;
+  // Use one stable public canonical domain. Proxy hosts must never enter a public Sitemap.
+  const baseUrl = PRIMARY_SITE_URL;
 
   const urls: string[] = [];
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 
   for (const lang of langs) {
     // Homepage
-    urls.push(`<url><loc>${baseUrl}/${lang}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`);
+    urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}`)}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`);
     
     // Products listing page
-    urls.push(`<url><loc>${baseUrl}/${lang}/products</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`);
+    urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/products`)}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`);
     
     // Individual products
     for (const p of products) {
-      urls.push(`<url><loc>${baseUrl}/${lang}/products/${p.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
+      urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/products/${p.slug}`)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
     }
     
     // Static pages
     for (const pg of pages) {
-      urls.push(`<url><loc>${baseUrl}/${lang}/page/${pg.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`);
+      urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/page/${pg.slug}`)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`);
     }
 
     // Blog listing and independently crawlable article pages
-    urls.push(`<url><loc>${baseUrl}/${lang}/blog</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`);
+    urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/blog`)}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`);
     for (const article of blogArticles) {
       const imageUrl = article.featured_image?.startsWith('http')
         ? article.featured_image
@@ -150,9 +149,9 @@ router.get('/sitemap.xml', (_req: Request, res: Response) => {
           ? `${baseUrl}${article.featured_image}`
           : '';
       const imageXml = imageUrl
-        ? `<image:image><image:loc>${imageUrl}</image:loc><image:title>${article.translations[lang]?.title || article.translations.en.title}</image:title></image:image>`
+        ? `<image:image><image:loc>${escapeXml(imageUrl)}</image:loc><image:title>${escapeXml(article.translations[lang]?.title || article.translations.en.title)}</image:title></image:image>`
         : '';
-      urls.push(`<url><loc>${baseUrl}/${lang}/blog/${article.slug}</loc><lastmod>${article.date || today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>${imageXml}</url>`);
+      urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/blog/${article.slug}`)}</loc><lastmod>${article.date || today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>${imageXml}</url>`);
     }
   }
 

@@ -15,16 +15,32 @@ interface SEOMetadata {
   ogImage?: string;
 }
 
-/**
- * 获取首页 SEO 元数据
- */
-export async function getHomepageSEO(): Promise<SEOMetadata> {
-  return {
+const homepageCopy: Record<string, SEOMetadata> = {
+  en: {
     title: 'NevenShopper — Premium Disposable Vapes',
     description: 'Discover premium NEVEN disposable vapes with exceptional flavor and quality. Browse our collection of high-quality vaping products.',
     keywords: 'disposable vapes, NEVEN vapes, premium vaping, vape products, e-cigarettes, vaping devices',
     h1Title: 'Premium NEVEN Disposable Vapes - High Quality Vaping Products',
-  };
+  },
+  de: {
+    title: 'NevenShopper — Premium Einweg-Vapes',
+    description: 'Entdecken Sie hochwertige NEVEN Einweg-Vapes mit klaren Produktinformationen, innovativen Funktionen und sorgfältiger Verarbeitung.',
+    keywords: 'NEVEN Vapes, Einweg-Vapes, Vape Produkte, Premium Vaping, E-Zigaretten',
+    h1Title: 'Premium NEVEN Einweg-Vapes und Vape-Produkte',
+  },
+  ar: {
+    title: 'NevenShopper — أجهزة NEVEN الإلكترونية المتميزة',
+    description: 'اكتشف أجهزة NEVEN الإلكترونية المتميزة مع معلومات واضحة عن المنتجات وميزات مبتكرة وجودة تصنيع دقيقة.',
+    keywords: 'NEVEN، السجائر الإلكترونية، أجهزة فيب، منتجات فيب مميزة',
+    h1Title: 'أجهزة NEVEN الإلكترونية ومنتجات الفيب المتميزة',
+  },
+};
+
+/**
+ * 获取首页 SEO 元数据
+ */
+export async function getHomepageSEO(lang = 'en'): Promise<SEOMetadata> {
+  return homepageCopy[lang] || homepageCopy.en;
 }
 
 /**
@@ -66,7 +82,7 @@ export function generateHomepageStructuredData(baseUrl: string): string {
 /**
  * 注入 SEO 元数据到 HTML 模板
  */
-export function injectSEOMetadata(html: string, seo: SEOMetadata, baseUrl?: string): string {
+export function injectSEOMetadata(html: string, seo: SEOMetadata, baseUrl?: string, lang = 'en'): string {
   // 注入 H1 标题到 root div 之前（作为隐藏的 SEO 元素）
   const h1Html = `<h1 style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">${escapeHtml(seo.h1Title)}</h1>`;
   
@@ -75,9 +91,27 @@ export function injectSEOMetadata(html: string, seo: SEOMetadata, baseUrl?: stri
   
   // 生成 JSON-LD 结构化数据
   const structuredData = baseUrl ? generateHomepageStructuredData(baseUrl) : '';
+  const canonical = baseUrl ? `${baseUrl}/${lang}` : '';
+  const alternateLinks = baseUrl
+    ? ['en', 'de', 'ar'].map((locale) => `<link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}">`).join('\n')
+    : '';
+  const withoutBaseSeo = html
+    .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/i, '')
+    .replace(/<meta\s+name=["'](?:description|keywords)["'][^>]*>\s*/gi, '')
+    .replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '');
+  const headSeo = [
+    `<title>${escapeHtml(seo.title)}</title>`,
+    `<meta name="description" content="${escapeHtml(seo.description)}">`,
+    `<meta name="keywords" content="${escapeHtml(seo.keywords)}">`,
+    canonical ? `<link rel="canonical" href="${canonical}">` : '',
+    alternateLinks,
+  ].filter(Boolean).join('\n');
   
   // 替换 root div 的位置
-  const modifiedHtml = html.replace(
+  const modifiedHtml = withoutBaseSeo.replace(
+    '</head>',
+    `${headSeo}\n</head>`
+  ).replace(
     '<div id="root"></div>',
     `${h1Html}${imageHtml}${structuredData}<div id="root"></div>`
   );

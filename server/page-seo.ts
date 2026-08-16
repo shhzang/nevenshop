@@ -232,6 +232,23 @@ export function generateMetaTags(seo: PageSEOMetadata): string {
 }
 
 /**
+ * Injects route-specific metadata into the initial HTML response before the
+ * client app renders. This prevents indexable client routes from inheriting
+ * the homepage's canonical URL and leaves a crawlable H1 for no-JS fetches.
+ */
+export function injectPageSEO(html: string, seo: PageSEOMetadata, h1Title: string): string {
+  const withoutBaseSeo = html
+    .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/i, '')
+    .replace(/<meta\s+name=["'](?:description|keywords)["'][^>]*>\s*/gi, '')
+    .replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '')
+    .replace(/<meta\s+property=["']og:(?:type|title|description|url|image)["'][^>]*>\s*/gi, '')
+    .replace(/<meta\s+name=["']twitter:(?:card|title|description|image)["'][^>]*>\s*/gi, '');
+  const fallback = `<main data-seo-fallback><h1>${escapeHtml(h1Title)}</h1><p>${escapeHtml(seo.description)}</p></main>`;
+  const withHead = withoutBaseSeo.replace('</head>', `${generateMetaTags(seo)}\n</head>`);
+  return withHead.replace('<div id="root"></div>', `${fallback}<div id="root"></div>`);
+}
+
+/**
  * Escape HTML special characters
  */
 function escapeHtml(text: string): string {

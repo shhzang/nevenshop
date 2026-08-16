@@ -97,3 +97,20 @@
 - [x] 创建可抓取的文章 URL，并将 Blog 和文章 URL 纳入 Sitemap
 - [x] 验证多语言页面、结构化数据、构建和测试
 - [x] 保存 checkpoint
+
+## Blog 文章显示异常修复
+
+- [ ] 核对线上页面、预览环境与 Blog API 的文章数量
+- [ ] 修复线上 Blog 页面仅显示 3 篇文章的原因
+- [ ] 验证英文、德文和阿拉伯文 Blog 列表均显示完整文章
+- [ ] 保存 checkpoint
+
+## Google 收录基础优化
+
+- [x] 审查线上 robots、Sitemap、canonical、状态码与可抓取内容
+- [x] 核对 Blog、产品、静态页与多语言 URL 是否进入 Sitemap
+- [x] 实施无需 Search Console 权限的高优先级技术优化
+- [x] 输出 Google Search Console 提交与索引请求清单
+- [x] 验证本地收录入口、规范域名与 Sitemap XML
+- [x] 保存包含收录优化改动的 checkpoint
+- [ ] 发布后核验线上 robots、Sitemap、canonical 与可抓取 HTML

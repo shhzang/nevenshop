@@ -7,12 +7,22 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getHomepageSEO, injectSEOMetadata } from "../ssr-helper";
 import { getBlogArticleBySlug, injectBlogArticleSEO, injectBlogListingSEO } from "../blog-seo";
+import { PRIMARY_SITE_URL } from "../seo-config";
+import {
+  getProductDetailSEO,
+  getProductsListingSEO,
+  getStaticPageSEO,
+  injectPageSEO,
+} from "../page-seo";
 
-async function injectRouteSEO(html: string, originalUrl: string, protocol: string, host: string): Promise<string> {
+async function injectRouteSEO(html: string, originalUrl: string): Promise<string> {
   const pathname = originalUrl.split("?")[0].replace(/\/$/, "") || "/";
-  const baseUrl = `${protocol}://${host}`;
+  const baseUrl = PRIMARY_SITE_URL;
   const blogArticleMatch = pathname.match(/^\/(en|de|ar)\/blog\/([^/]+)$/);
   const blogListingMatch = pathname.match(/^\/(en|de|ar)\/blog$/);
+  const productDetailMatch = pathname.match(/^\/(en|de|ar)\/products\/([^/]+)$/);
+  const productListingMatch = pathname.match(/^\/(en|de|ar)\/products$/);
+  const staticPageMatch = pathname.match(/^\/(en|de|ar)\/page\/([^/]+)$/);
 
   if (blogArticleMatch) {
     const [, lang, slug] = blogArticleMatch;
@@ -24,8 +34,27 @@ async function injectRouteSEO(html: string, originalUrl: string, protocol: strin
     return injectBlogListingSEO(html, blogListingMatch[1], baseUrl);
   }
 
-  if (pathname === "/" || pathname === "/en" || pathname === "/de" || pathname === "/ar") {
-    return injectSEOMetadata(html, await getHomepageSEO(), baseUrl);
+  if (productDetailMatch) {
+    const [, lang, slug] = productDetailMatch;
+    const seo = getProductDetailSEO(slug, lang, baseUrl);
+    return seo ? injectPageSEO(html, seo, seo.title) : html;
+  }
+
+  if (productListingMatch) {
+    const seo = getProductsListingSEO(productListingMatch[1], baseUrl);
+    return injectPageSEO(html, seo, seo.title);
+  }
+
+  if (staticPageMatch) {
+    const [, lang, slug] = staticPageMatch;
+    const seo = getStaticPageSEO(slug, lang, baseUrl);
+    return seo ? injectPageSEO(html, seo, seo.title) : html;
+  }
+
+  const homepageMatch = pathname.match(/^\/(en|de|ar)$/);
+  if (pathname === "/" || homepageMatch) {
+    const lang = homepageMatch?.[1] ?? "en";
+    return injectSEOMetadata(html, await getHomepageSEO(lang), baseUrl, lang);
   }
 
   return html;
@@ -66,9 +95,7 @@ export async function setupVite(app: Express, server: Server) {
       
       template = await injectRouteSEO(
         template,
-        url,
-        req.protocol || "https",
-        req.get("host") || "neven.bar"
+        url
       );
       
       const page = await vite.transformIndexHtml(url, template);
@@ -100,9 +127,7 @@ export async function serveStatic(app: Express) {
     
     html = await injectRouteSEO(
       html,
-      _req.originalUrl,
-      _req.protocol || "https",
-      _req.get("host") || "neven.bar"
+      _req.originalUrl
     );
     
     res.set({ "Content-Type": "text/html" }).send(html);
