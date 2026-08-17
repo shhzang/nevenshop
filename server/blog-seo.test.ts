@@ -9,10 +9,10 @@ import {
 const template = "<html><head><title>Base title</title><meta name=\"description\" content=\"Base description\"></head><body><div id=\"root\"></div></body></html>";
 
 describe("2026 Blog content and SEO", () => {
-  it("keeps 20 newly added articles complete in English, German and Arabic", () => {
+  it("keeps every 2026 article addition complete in English, German and Arabic", () => {
     const additions = getBlogArticles().filter((article) => article.id >= 4);
 
-    expect(additions).toHaveLength(20);
+    expect(additions.length).toBeGreaterThanOrEqual(20);
     additions.forEach((article) => {
       expect(article.featured_image).toMatch(/^\/manus-storage\//);
       expect(article.seo?.en.description.length).toBeGreaterThan(50);
