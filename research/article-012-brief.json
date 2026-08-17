@@ -1,0 +1,11 @@
+{
+  "title": "Adult-Only Vape Website Checklist: A 2026 Retail Information Review",
+  "primaryKeyword": "adult-only vape website checklist",
+  "relatedKeywords": ["vape retailer website age check", "ENDS online retail information", "adult tobacco product sales checklist", "vape product page compliance review", "FDA retailer information"],
+  "searchIntent": "Provide a high-level checklist for adult-facing retail websites that sell or present ENDS, without offering legal advice or suggesting an age gate alone proves compliance.",
+  "sourceName": "U.S. FDA — Selling Tobacco Products in Retail Stores",
+  "sourceUrl": "https://www.fda.gov/tobacco-products/retail-sales-tobacco-products/selling-tobacco-products-retail-stores",
+  "sourceFacts": ["FDA states that retailers may sell e-cigarettes, e-liquids, and other ENDS only to customers 21 or older in the United States.", "FDA states that retailers should check photo ID for everyone under 30 who attempts to purchase tobacco products.", "FDA notes retailers must also follow state and local laws, which may be more restrictive."],
+  "jurisdictionBoundary": "Present this as a public-information review for US adult retail contexts only, and explain that online verification and local requirements may differ.",
+  "prohibitedClaims": ["Do not claim that an age gate guarantees legal compliance.", "Do not give legal advice or avoidance guidance.", "Do not market or optimize products toward minors."]
+}

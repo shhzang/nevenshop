@@ -10,6 +10,7 @@ export interface BlogArticle {
   id: number;
   slug: string;
   date: string;
+  published_at?: string;
   featured_image?: string;
   seo?: Record<string, { title: string; description: string; keywords: string }>;
   translations: Record<string, { title: string; excerpt: string; content: string }>;
@@ -44,13 +45,21 @@ function metaTag(name: string, content: string): string {
   return `<meta name="${name}" content="${escapeHtml(content)}">`;
 }
 
-export function getBlogArticles(): BlogArticle[] {
-  const blogPath = path.join(process.cwd(), "server", "data", "blog.json");
-  return JSON.parse(fs.readFileSync(blogPath, "utf8")) as BlogArticle[];
+export function isBlogArticlePublished(article: Pick<BlogArticle, "published_at">, now = new Date()): boolean {
+  if (!article.published_at) return true;
+  const publishAt = new Date(`${article.published_at}T00:00:00Z`);
+  return !Number.isNaN(publishAt.valueOf()) && publishAt <= now;
 }
 
-export function getBlogArticleBySlug(slug: string): BlogArticle | undefined {
-  return getBlogArticles().find((article) => article.slug === slug);
+export function getBlogArticles(options: { includeScheduled?: boolean; now?: Date } = {}): BlogArticle[] {
+  const blogPath = path.join(process.cwd(), "server", "data", "blog.json");
+  const articles = JSON.parse(fs.readFileSync(blogPath, "utf8")) as BlogArticle[];
+  if (options.includeScheduled) return articles;
+  return articles.filter((article) => isBlogArticlePublished(article, options.now));
+}
+
+export function getBlogArticleBySlug(slug: string, options: { includeScheduled?: boolean; now?: Date } = {}): BlogArticle | undefined {
+  return getBlogArticles(options).find((article) => article.slug === slug);
 }
 
 function injectHead(html: string, headHtml: string, fallbackHtml: string): string {

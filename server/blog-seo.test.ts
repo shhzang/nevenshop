@@ -4,11 +4,17 @@ import {
   getBlogArticles,
   injectBlogArticleSEO,
   injectBlogListingSEO,
+  isBlogArticlePublished,
 } from "./blog-seo";
 
 const template = "<html><head><title>Base title</title><meta name=\"description\" content=\"Base description\"></head><body><div id=\"root\"></div></body></html>";
 
 describe("2026 Blog content and SEO", () => {
+  it("only considers a scheduled article published on or after its release date", () => {
+    expect(isBlogArticlePublished({ published_at: "2026-08-24" }, new Date("2026-08-23T23:59:59Z"))).toBe(false);
+    expect(isBlogArticlePublished({ published_at: "2026-08-24" }, new Date("2026-08-24T00:00:00Z"))).toBe(true);
+  });
+
   it("keeps every 2026 article addition complete in English, German and Arabic", () => {
     const additions = getBlogArticles().filter((article) => article.id >= 4);
 

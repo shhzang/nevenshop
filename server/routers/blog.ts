@@ -1,27 +1,13 @@
 import { publicProcedure, router } from '../_core/trpc';
-import * as fs from 'fs';
-import * as path from 'path';
 import { z } from 'zod';
-
-// Load blog data
-function loadBlogData() {
-  const blogPath = path.join(process.cwd(), 'server', 'data', 'blog.json');
-  try {
-    const data = fs.readFileSync(blogPath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Failed to load blog data:', error);
-    return [];
-  }
-}
+import { getBlogArticleBySlug, getBlogArticles } from '../blog-seo';
 
 export const blogRouter = router({
   list: publicProcedure.query(() => {
-    return loadBlogData();
+    return getBlogArticles();
   }),
 
   getBySlug: publicProcedure.input(z.object({ slug: z.string().min(1) })).query(({ input }) => {
-    const blogs = loadBlogData();
-    return blogs.find((blog: any) => blog.slug === input.slug);
+    return getBlogArticleBySlug(input.slug) ?? null;
   }),
 });

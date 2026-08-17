@@ -16,7 +16,7 @@ for (const language of ['en', 'de', 'ar']) {
   if (!title || !excerpt || !content) throw new Error(`Missing ${language} content fields`);
   if (!seo?.title || !seo?.description || !seo?.keywords) throw new Error(`Missing ${language} SEO fields`);
   if (content.length < 1800) throw new Error(`${language} content is too short for a substantive article`);
-  if (!/https:\/\/(www\.)?(epa|fda|faa|gov\.uk|ec\.europa)\.gov|https:\/\/www\.epa\.gov|https:\/\/www\.fda\.gov/i.test(content)) {
+  if (!/https:\/\/(?:www\.)?(?:epa\.gov|fda\.gov|faa\.gov|gov\.uk|ec\.europa\.eu)/i.test(content)) {
     throw new Error(`${language} content has no official source link`);
   }
 }

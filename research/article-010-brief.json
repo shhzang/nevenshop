@@ -1,0 +1,11 @@
+{
+  "title": "How to Read Vape Packaging Information Without Guesswork",
+  "primaryKeyword": "how to read vape packaging information",
+  "relatedKeywords": ["vape packaging label guide", "ENDS warning statement information", "vape retailer label review", "nicotine warning packaging", "FDA tobacco product labeling"],
+  "searchIntent": "Provide an adult-focused, non-legal overview of the public information a reader can use to review tobacco product packaging and warning statements.",
+  "sourceName": "U.S. FDA — Labeling and Warning Statements for Tobacco Products",
+  "sourceUrl": "https://www.fda.gov/tobacco-products/products-guidance-regulations/labeling-and-warning-statements-tobacco-products",
+  "sourceFacts": ["FDA maintains information on required warning and labeling statements for tobacco products, including covered tobacco products and ENDS.", "Labeling obligations depend on product type and jurisdiction.", "Retailers should rely on official guidance and supplier documentation rather than assumptions about a package."],
+  "jurisdictionBoundary": "Discuss FDA public resources at a high level only; make clear that label requirements differ by product and jurisdiction and that the article is not a compliance determination.",
+  "prohibitedClaims": ["Do not claim a package proves a product is authorized.", "Do not give legal advice.", "Do not present labels as health or product quality guarantees."]
+}

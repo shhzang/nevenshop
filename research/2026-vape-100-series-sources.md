@@ -72,3 +72,25 @@
 | 搜索意图 | 向成年使用者解释为什么应先查询当地合格回收或危险废物渠道，而不是将设备投入普通垃圾或普通回收箱。 |
 | 来源 | EPA《How to Safely Dispose of E-Cigarettes: Information for Individuals》：<https://www.epa.gov/hw/how-safely-dispose-e-cigarettes-information-individuals> |
 | 写作边界 | 仅概述 EPA 面向美国个人的指导；不指示用户拆卸设备、接触液体或自行运输损坏物品，强调当地渠道和规则。 |
+
+## 第 6 篇内容简报
+
+| 字段 | 结论 |
+|---|---|
+| 拟定英文标题 | Reusable Vape Evidence: A 2026 Retail Documentation Checklist |
+| 主关键词 | reusable vape definition |
+| 关联关键词 | rechargeable refillable vape; replaceable vape coil; refillable pod availability; reusable vape inspection evidence; UK single-use vape rules |
+| 搜索意图 | 面向英国市场相关的零售和分销读者，解释可重复使用产品的文件、替换件可得性和地区规则复核。 |
+| 来源 | GOV.UK《Single-use vapes ban: information for businesses》：<https://www.gov.uk/guidance/single-use-vapes-ban> |
+| 写作边界 | 仅说明英国官方定义和证据准备思路；不宣称任意设备自动合规，不替代 Trading Standards 或当地法律意见。 |
+
+## 第 7 篇内容简报
+
+| 字段 | 结论 |
+|---|---|
+| 拟定英文标题 | How to Read the FDA Authorized E-Cigarette List in 2026 |
+| 主关键词 | FDA authorized e-cigarettes |
+| 关联关键词 | FDA searchable tobacco products database; ENDS marketing granted order; legal sale United States; authorized e-cigarette list; retailer product check |
+| 搜索意图 | 解释美国 FDA 公开名单、数据库与营销授权的阅读方式，面向零售和合规信息核对，不替代法律判断。 |
+| 来源 | FDA《E-Cigarettes, “Vapes” and Other ENDS Authorized by the FDA》：<https://www.fda.gov/tobacco-products/market-and-distribute-tobacco-product/e-cigarettes-vapes-and-other-electronic-nicotine-delivery-systems-ends-authorized-fda> |
+| 写作边界 | 明确 FDA 授权不表示产品安全或获批；信息仅适用美国市场，不构成任何产品销售资格或法律意见。 |
