@@ -1,0 +1,25 @@
+{
+  "title": "ENDS Public Information Workflow: Research Without Assumptions",
+  "primaryKeyword": "ENDS public information workflow",
+  "relatedKeywords": [
+    "ENDS public information workflow",
+    "ENDS public information workflow 2026",
+    "adult vape information",
+    "vape retail guidance",
+    "vape trend 2026"
+  ],
+  "searchIntent": "Provide an original, adult-focused informational explainer for the 2026 query “ENDS public information workflow”, with concrete decision points and no sales claims.",
+  "sourceName": "U.S. FDA — E-Cigarettes Authorized by FDA",
+  "sourceUrl": "https://www.fda.gov/tobacco-products/market-and-distribute-tobacco-product/e-cigarettes-vapes-and-other-electronic-nicotine-delivery-systems-ends-authorized-fda",
+  "sourceFacts": [
+    "FDA maintains public information about tobacco products that may be legally marketed in the United States.",
+    "Public database research should be dated and product-specific.",
+    "Marketing claims should not replace official regulatory information."
+  ],
+  "jurisdictionBoundary": "Explain research workflow only; do not state any particular product is authorized.",
+  "prohibitedClaims": [
+    "Do not make health, safety, authorization, compliance, performance, or suitability guarantees.",
+    "Do not market to minors, provide medical advice, or explain law evasion.",
+    "Do not invent studies, product facts, legal requirements, or URLs."
+  ]
+}
