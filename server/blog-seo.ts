@@ -112,7 +112,11 @@ export function injectBlogArticleSEO(html: string, article: BlogArticle, lang: s
   const articleHtml = translation.content
     .split("\n\n")
     .filter(Boolean)
-    .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+    .map((paragraph) => {
+      const heading = paragraph.replace(/^#{1,3}\s+/, "");
+      const isHeading = heading.length < 70 && !/[.!؟。]$/.test(heading);
+      return isHeading ? `<h2>${escapeHtml(heading)}</h2>` : `<p>${escapeHtml(paragraph)}</p>`;
+    })
     .join("");
   const head = [
     `<title>${escapeHtml(title)}</title>`,

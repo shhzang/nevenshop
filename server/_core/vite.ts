@@ -60,6 +60,12 @@ async function injectRouteSEO(html: string, originalUrl: string): Promise<string
   return html;
 }
 
+function isNonPublicBlogArticleRoute(originalUrl: string): boolean {
+  const pathname = originalUrl.split("?")[0].replace(/\/$/, "") || "/";
+  const match = pathname.match(/^\/(en|de|ar)\/blog\/([^/]+)$/);
+  return Boolean(match && !getBlogArticleBySlug(match[2]));
+}
+
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
@@ -99,7 +105,8 @@ export async function setupVite(app: Express, server: Server) {
       );
       
       const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const status = isNonPublicBlogArticleRoute(url) ? 404 : 200;
+      res.status(status).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);
@@ -130,6 +137,7 @@ export async function serveStatic(app: Express) {
       _req.originalUrl
     );
     
-    res.set({ "Content-Type": "text/html" }).send(html);
+    const status = isNonPublicBlogArticleRoute(_req.originalUrl) ? 404 : 200;
+    res.status(status).set({ "Content-Type": "text/html" }).send(html);
   });
 }

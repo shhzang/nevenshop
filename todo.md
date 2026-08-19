@@ -148,3 +148,11 @@
 - [x] 验证已发布文章的 SSR、JSON-LD、canonical 和 Sitemap 条目
 - [x] 验证预定文章不出现在 Sitemap 且返回非公开详情页
 - [x] 保存最终 checkpoint
+
+## Google 收录停滞诊断与优化
+
+- [x] 审查线上 robots、Sitemap、canonical、状态码和可抓取正文
+- [x] 检查重复页面、发布时间、文章内容与内部链接信号
+- [x] 实施高优先级收录与页面质量优化
+- [x] 输出 Google Search Console 的具体排查与提交步骤
+- [x] 验证改进并保存 checkpoint

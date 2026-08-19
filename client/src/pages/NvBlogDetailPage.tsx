@@ -13,10 +13,17 @@ interface BlogArticle {
 }
 
 const copy = {
-  en: { blog: "Blog", back: "All articles", related: "Continue reading", notFound: "This article is not available." },
-  de: { blog: "Blog", back: "Alle Artikel", related: "Weiterlesen", notFound: "Dieser Artikel ist nicht verfügbar." },
-  ar: { blog: "المدونة", back: "كل المقالات", related: "تابع القراءة", notFound: "هذه المقالة غير متاحة." },
+  en: { blog: "Blog", back: "All articles", related: "Continue reading", notFound: "This article is not available.", reviewed: "Editorial review", updated: "Updated", sourceNote: "Sources are linked in the article. Check local rules and the original guidance before acting." },
+  de: { blog: "Blog", back: "Alle Artikel", related: "Weiterlesen", notFound: "Dieser Artikel ist nicht verfügbar.", reviewed: "Redaktionelle Prüfung", updated: "Aktualisiert", sourceNote: "Quellen sind im Artikel verlinkt. Prüfen Sie vor Maßnahmen lokale Vorschriften und die Originalhinweise." },
+  ar: { blog: "المدونة", back: "كل المقالات", related: "تابع القراءة", notFound: "هذه المقالة غير متاحة.", reviewed: "مراجعة تحريرية", updated: "آخر تحديث", sourceNote: "تظهر المصادر كرابط داخل المقالة. راجع القواعد المحلية والمصدر الأصلي قبل اتخاذ أي إجراء." },
 };
+
+function renderParagraphWithLinks(paragraph: string) {
+  return paragraph.split(/(https?:\/\/[^\s]+)/g).map((part, index) => {
+    if (!part.startsWith("http")) return part;
+    return <a key={index} href={part} target="_blank" rel="noreferrer" className="underline decoration-stone-400 underline-offset-4 hover:decoration-stone-900">{part}</a>;
+  });
+}
 
 export default function NvBlogDetailPage() {
   const params = useParams<{ slug: string }>();
@@ -85,6 +92,11 @@ export default function NvBlogDetailPage() {
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">{formattedDate}</p>
         <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-stone-900 sm:text-5xl">{translation.title}</h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600">{translation.excerpt}</p>
+        <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1 text-sm text-stone-500">
+          <span>{text.reviewed}: NEVEN Editorial Team</span>
+          <span aria-hidden="true">•</span>
+          <span>{text.updated}: {formattedDate}</span>
+        </div>
 
         {activeArticle.featured_image && (
           <img
@@ -96,10 +108,15 @@ export default function NvBlogDetailPage() {
 
         <div className="prose prose-stone mt-10 max-w-none prose-headings:font-semibold prose-p:text-[1.06rem] prose-p:leading-8">
           {paragraphs.map((paragraph, index) => {
-            const looksLikeHeading = paragraph.length < 70 && !/[.!؟。]$/.test(paragraph);
-            return looksLikeHeading ? <h2 key={index}>{paragraph}</h2> : <p key={index}>{paragraph}</p>;
+            const heading = paragraph.replace(/^#{1,3}\s+/, "");
+            const looksLikeHeading = heading.length < 70 && !/[.!؟。]$/.test(heading);
+            return looksLikeHeading ? <h2 key={index}>{heading}</h2> : <p key={index}>{renderParagraphWithLinks(paragraph)}</p>;
           })}
         </div>
+
+        <aside className="mt-10 rounded-xl border border-stone-200 bg-white px-5 py-4 text-sm leading-6 text-stone-600">
+          <strong className="text-stone-900">{text.reviewed}.</strong> {text.sourceNote}
+        </aside>
 
         <div className="mt-12 border-t border-stone-200 pt-7">
           <Link href={`/${currentLang}/blog`} className="font-semibold text-stone-900 underline decoration-stone-400 underline-offset-4 transition-colors hover:decoration-stone-900">
