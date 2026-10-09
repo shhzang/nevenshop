@@ -1,0 +1,147 @@
+{
+  "domain": "neven.bar",
+  "retrieved_at": "2026-10-09",
+  "period": "2026-07 to 2026-09",
+  "results": {
+    "visits_total": {
+      "code": "failed_precondition",
+      "message": "api call failed: api call incurred no upstream cost: internal: api call failed, status code: 404, body: {\"meta\":{\"status\":\"Error\",\"error_code\":401,\"error_message\":\"Data not found\"}}"
+    },
+    "unique_visit": {
+      "code": "failed_precondition",
+      "message": "api call failed: api call incurred no upstream cost: internal: api call failed, status code: 404, body: {\"meta\":{\"status\":\"Error\",\"error_code\":401,\"error_message\":\"Data not found\"}}"
+    },
+    "traffic_sources_desktop": {
+      "code": "failed_precondition",
+      "message": "api call failed: api call incurred no upstream cost: internal: api call failed, status code: 404, body: {\"meta\":{\"status\":\"Error\",\"error_code\":401,\"error_message\":\"Data not found\"}}"
+    },
+    "traffic_sources_mobile": {
+      "meta": {
+        "request": {
+          "granularity": "Monthly",
+          "main_domain_only": false,
+          "mtd": false,
+          "show_verified": false,
+          "state": null,
+          "format": "json",
+          "domain": "neven.bar",
+          "start_date": "2026-07-01",
+          "end_date": "2026-09-30",
+          "country": "world"
+        },
+        "status": "Success",
+        "last_updated": "2026-09-30"
+      },
+      "visits": {
+        "neven.bar": [
+          {
+            "source_type": "Organic Search",
+            "visits": [
+              {
+                "date": "2026-07-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-08-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-09-01",
+                "visits": 0.0
+              }
+            ]
+          },
+          {
+            "source_type": "Organic Social",
+            "visits": [
+              {
+                "date": "2026-07-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-08-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-09-01",
+                "visits": 0.0
+              }
+            ]
+          },
+          {
+            "source_type": "Mail",
+            "visits": [
+              {
+                "date": "2026-07-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-08-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-09-01",
+                "visits": 0.0
+              }
+            ]
+          },
+          {
+            "source_type": "Display Ads",
+            "visits": [
+              {
+                "date": "2026-07-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-08-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-09-01",
+                "visits": 0.0
+              }
+            ]
+          },
+          {
+            "source_type": "Direct",
+            "visits": [
+              {
+                "date": "2026-07-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-08-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-09-01",
+                "visits": 0.0
+              }
+            ]
+          },
+          {
+            "source_type": "Referrals",
+            "visits": [
+              {
+                "date": "2026-07-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-08-01",
+                "visits": 0.0
+              },
+              {
+                "date": "2026-09-01",
+                "visits": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "global_rank": {
+      "code": "failed_precondition",
+      "message": "api call failed: api call incurred no upstream cost: internal: api call failed, status code: 404, body: {\"meta\":{\"status\":\"Error\",\"error_code\":401,\"error_message\":\"Data not found\"}}"
+    }
+  }
+}
