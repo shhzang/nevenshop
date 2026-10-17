@@ -22,7 +22,11 @@
       // after a real visitor reaches the canonical public domain.
       (function () {
         var productionHosts = ["neven.bar", "www.neven.bar"];
-        if (productionHosts.indexOf(window.location.hostname.toLowerCase()) === -1) {
+        var knownBotUserAgent = /(?:bot|crawler|spider|slurp|archiver|facebookexternalhit|facebot|whatsapp|linkedinbot|telegrambot|discordbot)/i;
+        if (
+          productionHosts.indexOf(window.location.hostname.toLowerCase()) === -1 ||
+          knownBotUserAgent.test(navigator.userAgent)
+        ) {
           return;
         }
 
