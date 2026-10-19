@@ -6,7 +6,11 @@ const articles = JSON.parse(await readFile("server/data/blog.json", "utf8"));
 const now = new Date();
 const publishedArticleCount = articles.filter((article) => {
   if (!article.published_at) return true;
-  const publishAt = new Date(`${article.published_at}T00:00:00Z`);
+  const publishAt = new Date(
+    /^\d{4}-\d{2}-\d{2}$/.test(article.published_at)
+      ? `${article.published_at}T00:00:00Z`
+      : article.published_at,
+  );
   return !Number.isNaN(publishAt.valueOf()) && publishAt <= now;
 }).length;
 const expectedBlogArticleUrls = publishedArticleCount * 3;
