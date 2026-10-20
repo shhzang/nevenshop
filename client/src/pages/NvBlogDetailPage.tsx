@@ -109,7 +109,7 @@ export default function NvBlogDetailPage() {
         <div className="prose prose-stone mt-10 max-w-none prose-headings:font-semibold prose-p:text-[1.06rem] prose-p:leading-8">
           {paragraphs.map((paragraph, index) => {
             const heading = paragraph.replace(/^#{1,3}\s+/, "");
-            const looksLikeHeading = heading.length < 70 && !/[.!؟。]$/.test(heading);
+            const looksLikeHeading = /^#{1,3}\s+/.test(paragraph);
             return looksLikeHeading ? <h2 key={index}>{heading}</h2> : <p key={index}>{renderParagraphWithLinks(paragraph)}</p>;
           })}
         </div>

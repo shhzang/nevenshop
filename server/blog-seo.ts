@@ -118,7 +118,7 @@ export function injectBlogArticleSEO(html: string, article: BlogArticle, lang: s
     .filter(Boolean)
     .map((paragraph) => {
       const heading = paragraph.replace(/^#{1,3}\s+/, "");
-      const isHeading = heading.length < 70 && !/[.!؟。]$/.test(heading);
+      const isHeading = /^#{1,3}\s+/.test(paragraph);
       return isHeading ? `<h2>${escapeHtml(heading)}</h2>` : `<p>${escapeHtml(paragraph)}</p>`;
     })
     .join("");
