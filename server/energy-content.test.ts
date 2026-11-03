@@ -60,8 +60,8 @@ describe('energy-type content additions', () => {
 
     expect(added).toHaveLength(10);
     expect(new Set(added.map((post) => post.featured_image))).toEqual(new Set([
-      '/manus-storage/energy-vape-pack-blog_ce513d36.webp',
-      '/manus-storage/energy-vape-white-blog_5fc76275.webp',
+      '/manus-storage/wala-yo-18000-red-bull-authorized_796bfb87.webp',
+      '/manus-storage/vapsolo-dg18000-red-bull-authorized_65ef6aa2.webp',
     ]));
     for (const post of added) {
       expect(post.featured_image).toMatch(/^\/manus-storage\//);
