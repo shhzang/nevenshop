@@ -50,6 +50,7 @@ describe('energy-type content additions', () => {
       const imageSources = [...detail.matchAll(/"src":"([^"\\]+)"/g)].map((match) => match[1]);
       expect(imageSources.length).toBeGreaterThan(0);
       expect(new Set(imageSources)).toEqual(new Set([product.thumbnail]));
+      expect(detail).not.toContain('image_id');
     }
   });
 
