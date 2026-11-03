@@ -242,11 +242,16 @@ export default function NvBlogPage() {
                   >
                     <div className="flex h-full flex-col p-5">
                       {blog.featured_image && (
-                        <Link href={`/${currentLang}/blog/${blog.slug}`} className="block overflow-hidden rounded-lg">
+                        <Link href={`/${currentLang}/blog/${blog.slug}`} className="block aspect-[16/9] overflow-hidden rounded-lg bg-stone-100">
                           <img
                             src={blog.featured_image}
                             alt={translation.title}
-                            className="h-48 w-full object-cover transition duration-300 hover:scale-[1.02]"
+                            width={960}
+                            height={540}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                            className="h-full w-full object-cover transition duration-300 hover:scale-[1.02]"
                           />
                         </Link>
                       )}

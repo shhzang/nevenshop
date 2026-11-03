@@ -102,6 +102,11 @@ export default function NvBlogDetailPage() {
           <img
             src={activeArticle.featured_image}
             alt={translation.title}
+            width={960}
+            height={540}
+            loading="eager"
+            decoding="async"
+            sizes="(min-width: 1024px) 960px, 100vw"
             className="mt-10 aspect-[16/9] w-full rounded-2xl object-cover shadow-sm"
           />
         )}

@@ -45,8 +45,13 @@ describe('energy-type content additions', () => {
     const added = posts.filter((post) => post.id >= 190);
 
     expect(added).toHaveLength(10);
+    expect(new Set(added.map((post) => post.featured_image))).toEqual(new Set([
+      '/manus-storage/energy-vape-pack-blog_ce513d36.webp',
+      '/manus-storage/energy-vape-white-blog_5fc76275.webp',
+    ]));
     for (const post of added) {
       expect(post.featured_image).toMatch(/^\/manus-storage\//);
+      expect(post.featured_image).toMatch(/\.webp$/);
       expect(Object.keys(post.seo).sort()).toEqual(['ar', 'de', 'en']);
       expect(Object.keys(post.translations).sort()).toEqual(['ar', 'de', 'en']);
       for (const lang of ['en', 'de', 'ar']) {
