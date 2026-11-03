@@ -39,7 +39,13 @@ describe('energy-type content additions', () => {
       expect(product.thumbnail).toMatch(/^\/manus-storage\/red-bull-.*-product_.*\.webp$/);
       expect(product.images.length).toBeGreaterThan(0);
       expect(product.images).toEqual([product.thumbnail]);
-      expect(product.content_blocks.length).toBeGreaterThan(0);
+      expect(product.content_blocks).toHaveLength(5);
+      const detail = JSON.stringify(product.content_blocks);
+      expect(detail).toContain('SEND EMAIL TO US');
+      expect(detail).toContain('Product Detail');
+      expect(detail).toContain('Leave Your Message');
+      expect(detail).toContain('1800 puffs');
+      expect(detail).toContain('mailto:neven6000@gmail.com');
     }
   });
 
