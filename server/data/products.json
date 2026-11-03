@@ -81882,9 +81882,9 @@
   "title": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical",
   "slug": "image-record-red-bull-marked-1800-puff-disposable-device",
   "excerpt": "Unverified image record for an 1800-puff disposable device carrying Red Bull marks and energy-drink wording. Not a sales listing or authorization claim.",
-  "thumbnail": "/manus-storage/red-bull-energy-vape-pack_e46e2319.png",
+  "thumbnail": "/manus-storage/red-bull-energy-vape-product_31b2d51e.webp",
   "images": [
-    "/manus-storage/red-bull-energy-vape-pack_e46e2319.png"
+    "/manus-storage/red-bull-energy-vape-product_31b2d51e.webp"
   ],
   "content_blocks": [
     {
@@ -81926,7 +81926,7 @@
                 {
                   "type": "fusion_imageframe",
                   "attrs": {
-                    "src": "/manus-storage/red-bull-energy-vape-pack_e46e2319.png",
+                    "src": "/manus-storage/red-bull-energy-vape-product_31b2d51e.webp",
                     "alt": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical"
                   },
                   "children": []
@@ -81962,9 +81962,9 @@
   "title": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai",
   "slug": "image-record-red-bull-marked-white-edition-disposable-device",
   "excerpt": "Unverified image record for a White Edition disposable device labelled coconut-acai and energy drink. Not a sales listing or authorization claim.",
-  "thumbnail": "/manus-storage/red-bull-white-vape_a0f9fb09.png",
+  "thumbnail": "/manus-storage/red-bull-white-vape-product_3fcae653.webp",
   "images": [
-    "/manus-storage/red-bull-white-vape_a0f9fb09.png"
+    "/manus-storage/red-bull-white-vape-product_3fcae653.webp"
   ],
   "content_blocks": [
     {
@@ -82006,7 +82006,7 @@
                 {
                   "type": "fusion_imageframe",
                   "attrs": {
-                    "src": "/manus-storage/red-bull-white-vape_a0f9fb09.png",
+                    "src": "/manus-storage/red-bull-white-vape-product_3fcae653.webp",
                     "alt": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai"
                   },
                   "children": []

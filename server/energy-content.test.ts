@@ -13,6 +13,7 @@ type BlogPost = {
 type Product = {
   id: number;
   slug: string;
+  thumbnail: string;
   images: string[];
   content_blocks: unknown[];
 };
@@ -34,8 +35,9 @@ describe('energy-type content additions', () => {
       'image-record-red-bull-marked-white-edition-disposable-device',
     ]));
     for (const product of added) {
+      expect(product.thumbnail).toMatch(/^\/manus-storage\/red-bull-.*-product_.*\.webp$/);
       expect(product.images.length).toBeGreaterThan(0);
-      expect(product.images[0]).toMatch(/^\/manus-storage\//);
+      expect(product.images).toEqual([product.thumbnail]);
       expect(product.content_blocks.length).toBeGreaterThan(0);
     }
   });
