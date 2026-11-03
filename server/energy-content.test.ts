@@ -31,10 +31,11 @@ describe('energy-type content additions', () => {
 
     expect(added).toHaveLength(2);
     expect(new Set(added.map((p) => p.slug))).toEqual(new Set([
-      'image-record-red-bull-marked-1800-puff-disposable-device',
-      'image-record-red-bull-marked-white-edition-disposable-device',
+      'neven-red-bull-18000-peach-winter-tropical-disposable-vape',
+      'neven-red-bull-18000-white-edition-coconut-acai-disposable-vape',
     ]));
     for (const product of added) {
+      expect(product.title).toContain('NEVEN Red Bull 18000');
       expect(product.thumbnail).toMatch(/^\/manus-storage\/red-bull-.*-product_.*\.webp$/);
       expect(product.images.length).toBeGreaterThan(0);
       expect(product.images).toEqual([product.thumbnail]);

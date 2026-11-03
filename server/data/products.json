@@ -81879,9 +81879,9 @@
     },
 {
   "id": 6165,
-  "title": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical",
-  "slug": "image-record-red-bull-marked-1800-puff-disposable-device",
-  "excerpt": "Unverified image record for an 1800-puff disposable device carrying Red Bull marks and energy-drink wording. Not a sales listing or authorization claim.",
+  "title": "NEVEN Red Bull 18000 Disposable Vape — Peach, Winter & Tropical Image-Verified Edition",
+  "slug": "neven-red-bull-18000-peach-winter-tropical-disposable-vape",
+  "excerpt": "Product-information page for the search phrase NEVEN Red Bull 18000. The supplied image visibly shows Red Bull-marked Peach, Winter and Tropical editions with an 1800-puff label; the 18000 specification, authorization and full technical data require manufacturer verification.",
   "thumbnail": "/manus-storage/red-bull-energy-vape-product_31b2d51e.webp",
   "images": [
     "/manus-storage/red-bull-energy-vape-product_31b2d51e.webp"
@@ -81918,7 +81918,7 @@
                   "type": "fusion_title",
                   "attrs": {
                     "size": "h1",
-                    "text_content": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical",
+                    "text_content": "NEVEN Red Bull 18000 Disposable Vape — Peach, Winter & Tropical Image-Verified Edition",
                     "margin_bottom": "16px"
                   },
                   "children": []
@@ -81927,14 +81927,28 @@
                   "type": "fusion_imageframe",
                   "attrs": {
                     "src": "/manus-storage/red-bull-energy-vape-product_31b2d51e.webp",
-                    "alt": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical"
+                    "alt": "NEVEN Red Bull 18000 Disposable Vape — Peach, Winter & Tropical Image-Verified Edition"
                   },
                   "children": []
                 },
                 {
                   "type": "fusion_text",
                   "attrs": {
-                    "text_content": "<p><strong>Image record only — not a sales listing.</strong></p><p>This page records what is visible in the supplied photograph: several disposable devices and boxes with Red Bull marks, flavour names and French nicotine warning text.</p><p>Visible label: Peach, Winter and Tropical editions; 1800 puffs shown. The image does not verify nicotine strength, caffeine, taurine, ingredients, manufacturer authorization, authenticity, market access, or legal status in any country. Adults should check the original packaging, local rules, and an independent source before treating any claim as reliable.</p>"
+                    "text_content": "<p><strong>Image-verified product information — not a manufacturer specification sheet or sales authorization.</strong></p><p>This page uses the search phrase <strong>NEVEN Red Bull 18000</strong> to identify the requested product record. The supplied photograph visibly shows Peach, Winter and Tropical edition packaging, Red Bull marks, an “1800 puffs” label, energy-drink wording and French nicotine warnings.</p><p><strong>Important specification check:</strong> the supplied photograph visibly reads “1800 puffs”, not “18000 puffs”. A third-party listing for another 18,000-puff Red Bull-flavour device may mention features such as a rechargeable battery, LED display, Type-C charging or mesh coils, but those details must not be transferred to this NEVEN image without a matching manufacturer datasheet.</p>"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_text",
+                  "attrs": {
+                    "text_content": "<p><strong>What is visible</strong></p><ul><li>Edition / flavour reference: Peach, Winter and Tropical editions.</li><li>Branding visible in the supplied image: Red Bull marks.</li><li>Visible puff wording: 1800 puffs.</li><li>Visible warning context: French nicotine warning text.</li></ul><p><strong>What still needs verification</strong></p><ul><li>Manufacturer identity, batch number and written Red Bull trademark authorization.</li><li>Actual nicotine strength, e-liquid volume, ingredients, caffeine or taurine content.</li><li>Battery capacity, charging port, coil type, puff count and whether the device is rechargeable.</li><li>Product notification, conformity, import and online-sales requirements in the destination country.</li></ul>"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_text",
+                  "attrs": {
+                    "text_content": "<p><strong>Adult information and compliance note</strong></p><p>Nicotine is addictive. Do not use an unverified device if the package, ingredients or nicotine concentration cannot be confirmed. Do not treat “Energy Drink” wording or a familiar logo as evidence of caffeine, taurine, energy, wellness or safety. The FDA has warned about unproven wellness claims for inhaled products and has raised specific concerns about inhaled caffeine products. Red Bull’s official website describes its energy-drink range; it does not verify this pictured vape.</p><p>Before any commercial listing, obtain the original manufacturer file and check the local rules for the United States, each EU member state and the specific Middle East destination. This page is product information, not legal, medical or authenticity advice.</p><p><a href=\"https://www.redbull.com/us-en/energydrink/products/red-bull-editions-energy-drinks\" rel=\"nofollow\">Red Bull official Editions information</a> · <a href=\"https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/eagle-energy-usa-inc-617712-12012021\" rel=\"nofollow\">FDA caffeine inhalation warning record</a> · <a href=\"https://corsearch.com/report-a-fake/red-bull\" rel=\"nofollow\">Red Bull fake-item reporting channel</a></p>"
                   },
                   "children": []
                 }
@@ -81947,10 +81961,10 @@
   ],
   "translations": {
     "de": {
-      "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical": "Bildnachweis: Mit Red-Bull-Kennzeichen versehene Einweg-E-Zigarette mit 1800 Zügen — Pfirsich / Winter / Tropical"
+      "NEVEN Red Bull 18000 Disposable Vape — Peach, Winter & Tropical Image-Verified Edition": "NEVEN Red Bull 18000 Einweg-Vape — Peach, Winter & Tropical, bildgeprüfte Edition"
     },
     "ar": {
-      "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical": "سجل صورة: جهاز إلكتروني أحادي الاستخدام يحمل علامات ريد بُل — 1800 سحبة"
+      "NEVEN Red Bull 18000 Disposable Vape — Peach, Winter & Tropical Image-Verified Edition": "NEVEN Red Bull 18000 — إصدارات الخوخ والشتاء والاستوائية موثقة بالصور"
     }
   },
   "meta": {},
@@ -81959,9 +81973,9 @@
 },
 {
   "id": 6166,
-  "title": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai",
-  "slug": "image-record-red-bull-marked-white-edition-disposable-device",
-  "excerpt": "Unverified image record for a White Edition disposable device labelled coconut-acai and energy drink. Not a sales listing or authorization claim.",
+  "title": "NEVEN Red Bull 18000 Disposable Vape — White Edition Coconut Acai Image-Verified",
+  "slug": "neven-red-bull-18000-white-edition-coconut-acai-disposable-vape",
+  "excerpt": "Product-information page for the search phrase NEVEN Red Bull 18000. The supplied image visibly shows a White Edition device labelled coconut-acai and an 1800-puff claim; the 18000 specification, authorization and full technical data require manufacturer verification.",
   "thumbnail": "/manus-storage/red-bull-white-vape-product_3fcae653.webp",
   "images": [
     "/manus-storage/red-bull-white-vape-product_3fcae653.webp"
@@ -81998,7 +82012,7 @@
                   "type": "fusion_title",
                   "attrs": {
                     "size": "h1",
-                    "text_content": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai",
+                    "text_content": "NEVEN Red Bull 18000 Disposable Vape — White Edition Coconut Acai Image-Verified",
                     "margin_bottom": "16px"
                   },
                   "children": []
@@ -82007,14 +82021,28 @@
                   "type": "fusion_imageframe",
                   "attrs": {
                     "src": "/manus-storage/red-bull-white-vape-product_3fcae653.webp",
-                    "alt": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai"
+                    "alt": "NEVEN Red Bull 18000 Disposable Vape — White Edition Coconut Acai Image-Verified"
                   },
                   "children": []
                 },
                 {
                   "type": "fusion_text",
                   "attrs": {
-                    "text_content": "<p><strong>Image record only — not a sales listing.</strong></p><p>This page records the supplied photograph of a handheld device whose visible label uses Red Bull marks, White Edition wording and an energy-drink description.</p><p>Visible label: White Edition; coconut-acai wording visible. The image does not verify nicotine strength, caffeine, taurine, ingredients, manufacturer authorization, authenticity, market access, or legal status in any country. Adults should check the original packaging, local rules, and an independent source before treating any claim as reliable.</p>"
+                    "text_content": "<p><strong>Image-verified product information — not a manufacturer specification sheet or sales authorization.</strong></p><p>This page uses the search phrase <strong>NEVEN Red Bull 18000</strong> to identify the requested product record. The supplied photograph visibly shows a White Edition device, Red Bull marks, coconut-acai wording, energy-drink wording and a French nicotine warning.</p><p><strong>Important specification check:</strong> the supplied photograph visibly reads “1800 puffs”, not “18000 puffs”. A third-party listing for another 18,000-puff Red Bull-flavour device may mention features such as a rechargeable battery, LED display, Type-C charging or mesh coils, but those details must not be transferred to this NEVEN image without a matching manufacturer datasheet.</p>"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_text",
+                  "attrs": {
+                    "text_content": "<p><strong>What is visible</strong></p><ul><li>Edition / flavour reference: White Edition; coconut-acai wording visible.</li><li>Branding visible in the supplied image: Red Bull marks.</li><li>Visible puff wording: 1800 puffs.</li><li>Visible warning context: French nicotine warning text.</li></ul><p><strong>What still needs verification</strong></p><ul><li>Manufacturer identity, batch number and written Red Bull trademark authorization.</li><li>Actual nicotine strength, e-liquid volume, ingredients, caffeine or taurine content.</li><li>Battery capacity, charging port, coil type, puff count and whether the device is rechargeable.</li><li>Product notification, conformity, import and online-sales requirements in the destination country.</li></ul>"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_text",
+                  "attrs": {
+                    "text_content": "<p><strong>Adult information and compliance note</strong></p><p>Nicotine is addictive. Do not use an unverified device if the package, ingredients or nicotine concentration cannot be confirmed. Do not treat “Energy Drink” wording or a familiar logo as evidence of caffeine, taurine, energy, wellness or safety. The FDA has warned about unproven wellness claims for inhaled products and has raised specific concerns about inhaled caffeine products. Red Bull’s official website describes its energy-drink range; it does not verify this pictured vape.</p><p>Before any commercial listing, obtain the original manufacturer file and check the local rules for the United States, each EU member state and the specific Middle East destination. This page is product information, not legal, medical or authenticity advice.</p><p><a href=\"https://www.redbull.com/us-en/energydrink/products/red-bull-editions-energy-drinks\" rel=\"nofollow\">Red Bull official Editions information</a> · <a href=\"https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/eagle-energy-usa-inc-617712-12012021\" rel=\"nofollow\">FDA caffeine inhalation warning record</a> · <a href=\"https://corsearch.com/report-a-fake/red-bull\" rel=\"nofollow\">Red Bull fake-item reporting channel</a></p>"
                   },
                   "children": []
                 }
@@ -82027,10 +82055,10 @@
   ],
   "translations": {
     "de": {
-      "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai": "Bildnachweis: Mit Red-Bull-Kennzeichen versehene White-Edition-Einweg-E-Zigarette — Kokosnuss-Açaí"
+      "NEVEN Red Bull 18000 Disposable Vape — White Edition Coconut Acai Image-Verified": "NEVEN Red Bull 18000 Einweg-Vape — White Edition Kokosnuss-Açaí, bildgeprüft"
     },
     "ar": {
-      "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai": "سجل صورة: جهاز White Edition يحمل علامات ريد بُل — جوز الهند وآساي"
+      "NEVEN Red Bull 18000 Disposable Vape — White Edition Coconut Acai Image-Verified": "NEVEN Red Bull 18000 — إصدار White Edition بنكهة جوز الهند وآساي موثق بالصورة"
     }
   },
   "meta": {},
