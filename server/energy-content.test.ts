@@ -45,7 +45,11 @@ describe('energy-type content additions', () => {
       expect(detail).toContain('Product Detail');
       expect(detail).toContain('Leave Your Message');
       expect(detail).toContain('1800 puffs');
+      expect(detail).not.toContain('18000');
       expect(detail).toContain('mailto:neven6000@gmail.com');
+      const imageSources = [...detail.matchAll(/"src":"([^"\\]+)"/g)].map((match) => match[1]);
+      expect(imageSources.length).toBeGreaterThan(0);
+      expect(new Set(imageSources)).toEqual(new Set([product.thumbnail]));
     }
   });
 
