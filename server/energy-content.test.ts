@@ -36,7 +36,7 @@ describe('energy-type content additions', () => {
     ]));
     for (const product of added) {
       expect(product.title).toContain('NEVEN Red Bull 18000');
-      expect(product.thumbnail).toMatch(/^\/manus-storage\/red-bull-.*-product_.*\.webp$/);
+      expect(product.thumbnail).toMatch(/^\/manus-storage\/(wala-yo-18000|vapsolo-dg18000)-red-bull-authorized_.*\.webp$/);
       expect(product.images.length).toBeGreaterThan(0);
       expect(product.images).toEqual([product.thumbnail]);
       expect(product.content_blocks).toHaveLength(5);
