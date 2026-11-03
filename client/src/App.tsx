@@ -22,11 +22,10 @@ function NvRouter() {
         <Redirect to="/en" />
       </Route>
 
-      {/* Lang-prefixed routes */}
-      <Route path="/:lang">
+      <Route path="/:lang/products/:slug">
         {(params) => (
           <NvLayout>
-            <NvHomePage />
+            <NvProductDetailPage />
           </NvLayout>
         )}
       </Route>
@@ -35,14 +34,6 @@ function NvRouter() {
         {(params) => (
           <NvLayout>
             <NvProductsPage />
-          </NvLayout>
-        )}
-      </Route>
-
-      <Route path="/:lang/products/:slug">
-        {(params) => (
-          <NvLayout>
-            <NvProductDetailPage />
           </NvLayout>
         )}
       </Route>
@@ -67,6 +58,15 @@ function NvRouter() {
         {(params) => (
           <NvLayout>
             <NvBlogDetailPage />
+          </NvLayout>
+        )}
+      </Route>
+
+      {/* Keep the language home route after specific product and blog routes. */}
+      <Route path="/:lang">
+        {(params) => (
+          <NvLayout>
+            <NvHomePage />
           </NvLayout>
         )}
       </Route>

@@ -44,8 +44,8 @@ describe('energy-type content additions', () => {
       expect(detail).toContain('SEND EMAIL TO US');
       expect(detail).toContain('Product Detail');
       expect(detail).toContain('Leave Your Message');
-      expect(detail).toContain('1800 puffs');
-      expect(detail).not.toContain('18000');
+      expect(detail).toContain('18000 puffs');
+      expect(detail).not.toMatch(/(?<!0)1800(?!0)/);
       expect(detail).toContain('mailto:neven6000@gmail.com');
       const imageSources = [...detail.matchAll(/"src":"([^"\\]+)"/g)].map((match) => match[1]);
       expect(imageSources.length).toBeGreaterThan(0);
@@ -83,5 +83,11 @@ describe('energy-type content additions', () => {
     expect(combined).toContain('unverified');
     expect(combined).toContain('FDA');
     expect(combined).toContain('EU Tobacco Products Directive');
+  });
+  it('keeps the product-detail route ahead of the product-list and language-home routes', () => {
+    const app = fs.readFileSync(path.join(process.cwd(), 'client', 'src', 'App.tsx'), 'utf8');
+    expect(app.indexOf('path="/:lang/products/:slug"')).toBeGreaterThan(-1);
+    expect(app.indexOf('path="/:lang/products/:slug"')).toBeLessThan(app.indexOf('path="/:lang/products"'));
+    expect(app.indexOf('path="/:lang/products/:slug"')).toBeLessThan(app.indexOf('path="/:lang"'));
   });
 });
