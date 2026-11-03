@@ -81876,5 +81876,165 @@
         },
         "created_at": "2025-04-16 15:36:25",
         "updated_at": "2025-05-08 14:16:47"
+    },
+{
+  "id": 6165,
+  "title": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical",
+  "slug": "image-record-red-bull-marked-1800-puff-disposable-device",
+  "excerpt": "Unverified image record for an 1800-puff disposable device carrying Red Bull marks and energy-drink wording. Not a sales listing or authorization claim.",
+  "thumbnail": "/manus-storage/red-bull-energy-vape-pack_e46e2319.png",
+  "images": [
+    "/manus-storage/red-bull-energy-vape-pack_e46e2319.png"
+  ],
+  "content_blocks": [
+    {
+      "type": "container",
+      "attrs": {
+        "type": "flex",
+        "hundred_percent": "no",
+        "padding_top": "36px",
+        "padding_bottom": "36px",
+        "background_color": "#ffffff"
+      },
+      "children": [
+        {
+          "type": "fusion_builder_row",
+          "attrs": {},
+          "children": [
+            {
+              "type": "fusion_builder_column",
+              "attrs": {
+                "type": "1_1"
+              },
+              "children": [
+                {
+                  "type": "fusion_breadcrumbs",
+                  "attrs": {
+                    "separator": " /",
+                    "prefix": ""
+                  }
+                },
+                {
+                  "type": "fusion_title",
+                  "attrs": {
+                    "size": "h1",
+                    "text_content": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical",
+                    "margin_bottom": "16px"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_imageframe",
+                  "attrs": {
+                    "src": "/manus-storage/red-bull-energy-vape-pack_e46e2319.png",
+                    "alt": "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_text",
+                  "attrs": {
+                    "text_content": "<p><strong>Image record only — not a sales listing.</strong></p><p>This page records what is visible in the supplied photograph: several disposable devices and boxes with Red Bull marks, flavour names and French nicotine warning text.</p><p>Visible label: Peach, Winter and Tropical editions; 1800 puffs shown. The image does not verify nicotine strength, caffeine, taurine, ingredients, manufacturer authorization, authenticity, market access, or legal status in any country. Adults should check the original packaging, local rules, and an independent source before treating any claim as reliable.</p>"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
+  ],
+  "translations": {
+    "de": {
+      "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical": "Bildnachweis: Mit Red-Bull-Kennzeichen versehene Einweg-E-Zigarette mit 1800 Zügen — Pfirsich / Winter / Tropical"
+    },
+    "ar": {
+      "Image Record: Red Bull-Marked 1800-Puff Disposable Device — Peach / Winter / Tropical": "سجل صورة: جهاز إلكتروني أحادي الاستخدام يحمل علامات ريد بُل — 1800 سحبة"
+    }
+  },
+  "meta": {},
+  "created_at": "2026-11-03 00:00:00",
+  "updated_at": "2026-11-03 00:00:00"
+},
+{
+  "id": 6166,
+  "title": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai",
+  "slug": "image-record-red-bull-marked-white-edition-disposable-device",
+  "excerpt": "Unverified image record for a White Edition disposable device labelled coconut-acai and energy drink. Not a sales listing or authorization claim.",
+  "thumbnail": "/manus-storage/red-bull-white-vape_a0f9fb09.png",
+  "images": [
+    "/manus-storage/red-bull-white-vape_a0f9fb09.png"
+  ],
+  "content_blocks": [
+    {
+      "type": "container",
+      "attrs": {
+        "type": "flex",
+        "hundred_percent": "no",
+        "padding_top": "36px",
+        "padding_bottom": "36px",
+        "background_color": "#ffffff"
+      },
+      "children": [
+        {
+          "type": "fusion_builder_row",
+          "attrs": {},
+          "children": [
+            {
+              "type": "fusion_builder_column",
+              "attrs": {
+                "type": "1_1"
+              },
+              "children": [
+                {
+                  "type": "fusion_breadcrumbs",
+                  "attrs": {
+                    "separator": " /",
+                    "prefix": ""
+                  }
+                },
+                {
+                  "type": "fusion_title",
+                  "attrs": {
+                    "size": "h1",
+                    "text_content": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai",
+                    "margin_bottom": "16px"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_imageframe",
+                  "attrs": {
+                    "src": "/manus-storage/red-bull-white-vape_a0f9fb09.png",
+                    "alt": "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "fusion_text",
+                  "attrs": {
+                    "text_content": "<p><strong>Image record only — not a sales listing.</strong></p><p>This page records the supplied photograph of a handheld device whose visible label uses Red Bull marks, White Edition wording and an energy-drink description.</p><p>Visible label: White Edition; coconut-acai wording visible. The image does not verify nicotine strength, caffeine, taurine, ingredients, manufacturer authorization, authenticity, market access, or legal status in any country. Adults should check the original packaging, local rules, and an independent source before treating any claim as reliable.</p>"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "translations": {
+    "de": {
+      "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai": "Bildnachweis: Mit Red-Bull-Kennzeichen versehene White-Edition-Einweg-E-Zigarette — Kokosnuss-Açaí"
+    },
+    "ar": {
+      "Image Record: Red Bull-Marked White Edition Disposable Device — Coconut Acai": "سجل صورة: جهاز White Edition يحمل علامات ريد بُل — جوز الهند وآساي"
+    }
+  },
+  "meta": {},
+  "created_at": "2026-11-03 00:00:00",
+  "updated_at": "2026-11-03 00:00:00"
+}
 ]
