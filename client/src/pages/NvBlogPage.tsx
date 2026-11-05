@@ -256,8 +256,8 @@ export default function NvBlogPage() {
                         </Link>
                       )}
 
-                      <div className="flex flex-1 flex-col pt-5">
-                        <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-2">
+                      <div className={`flex flex-1 flex-col pt-5 ${currentLang === 'ar' ? 'text-right' : 'text-left'}`}>
+                        <div className={`flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-2 ${currentLang === 'ar' ? 'justify-end' : 'justify-start'}`}>
                           <span>{formattedDate}</span>
                           <span className="rounded-full bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-600">
                             {getBlogCategoryLabel(getBlogCategory(blog.slug), currentLang)}
@@ -269,7 +269,7 @@ export default function NvBlogPage() {
                           </Link>
                         </h2>
                         <p className="text-gray-600 mb-5 line-clamp-3">{translation.excerpt}</p>
-                        <Link href={`/${currentLang}/blog/${blog.slug}`} className="mt-auto inline-flex w-fit font-semibold text-gray-900 underline decoration-gray-400 underline-offset-4 hover:decoration-gray-900">
+                        <Link href={`/${currentLang}/blog/${blog.slug}`} className={`mt-auto inline-flex w-fit font-semibold text-gray-900 underline decoration-gray-400 underline-offset-4 hover:decoration-gray-900 ${currentLang === 'ar' ? 'self-end' : 'self-start'}`}>
                           {currentLang === 'ar' ? 'اقرأ المقال' : currentLang === 'de' ? 'Artikel lesen' : 'Read article'}
                         </Link>
                       </div>

@@ -6,6 +6,7 @@ type BlogPost = {
   id: number;
   slug: string;
   featured_image: string;
+  related_product?: { slug: string; title: string };
   seo: Record<string, { title: string; description: string; keywords: string }>;
   translations: Record<string, { title: string; excerpt: string; content: string }>;
 };
@@ -103,6 +104,15 @@ describe('energy-type content additions', () => {
     expect(positions.get(203)).toBeLessThan(positions.get(192)!);
     expect(positions.get(204)).toBeGreaterThan(positions.get(191)!);
     expect(positions.get(204)).toBeLessThan(positions.get(190)!);
+  });
+  it('gives each Arabic post a unique cover, product link and RTL-aware detail layout', () => {
+    const posts = load<BlogPost[]>('blog.json').filter((post) => post.id >= 200 && post.id <= 204);
+    expect(new Set(posts.map((post) => post.featured_image)).size).toBe(5);
+    expect(posts.every((post) => post.featured_image.match(/^\/manus-storage\/cover-20[0-4]_.*\.png$/))).toBe(true);
+    expect(posts.every((post) => post.related_product?.slug.startsWith('neven-red-bull-18000-'))).toBe(true);
+    const detailPage = fs.readFileSync(path.join(process.cwd(), 'client', 'src', 'pages', 'NvBlogDetailPage.tsx'), 'utf8');
+    expect(detailPage).toContain('currentLang === "ar" ? "text-right"');
+    expect(detailPage).toContain('activeArticle.related_product.slug');
   });
   it('keeps the product-detail route ahead of the product-list and language-home routes', () => {
     const app = fs.readFileSync(path.join(process.cwd(), 'client', 'src', 'App.tsx'), 'utf8');

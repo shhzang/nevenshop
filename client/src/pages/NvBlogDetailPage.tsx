@@ -8,14 +8,15 @@ interface BlogArticle {
   slug: string;
   date: string;
   featured_image?: string;
+  related_product?: { slug: string; title: string; ar_title?: string };
   seo?: Record<string, { title: string; description: string; keywords: string }>;
   translations: Record<string, { title: string; excerpt: string; content: string }>;
 }
 
 const copy = {
-  en: { blog: "Blog", back: "All articles", related: "Continue reading", notFound: "This article is not available.", reviewed: "Editorial review", updated: "Updated", sourceNote: "Sources are linked in the article. Check local rules and the original guidance before acting." },
-  de: { blog: "Blog", back: "Alle Artikel", related: "Weiterlesen", notFound: "Dieser Artikel ist nicht verfügbar.", reviewed: "Redaktionelle Prüfung", updated: "Aktualisiert", sourceNote: "Quellen sind im Artikel verlinkt. Prüfen Sie vor Maßnahmen lokale Vorschriften und die Originalhinweise." },
-  ar: { blog: "المدونة", back: "كل المقالات", related: "تابع القراءة", notFound: "هذه المقالة غير متاحة.", reviewed: "مراجعة تحريرية", updated: "آخر تحديث", sourceNote: "تظهر المصادر كرابط داخل المقالة. راجع القواعد المحلية والمصدر الأصلي قبل اتخاذ أي إجراء." },
+  en: { blog: "Blog", back: "All articles", related: "Continue reading", product: "Related product", notFound: "This article is not available.", reviewed: "Editorial review", updated: "Updated", sourceNote: "Sources are linked in the article. Check local rules and the original guidance before acting." },
+  de: { blog: "Blog", back: "Alle Artikel", related: "Weiterlesen", product: "Passendes Produkt", notFound: "Dieser Artikel ist nicht verfügbar.", reviewed: "Redaktionelle Prüfung", updated: "Aktualisiert", sourceNote: "Quellen sind im Artikel verlinkt. Prüfen Sie vor Maßnahmen lokale Vorschriften und die Originalhinweise." },
+  ar: { blog: "المدونة", back: "كل المقالات", related: "تابع القراءة", product: "منتج مرتبط", notFound: "هذه المقالة غير متاحة.", reviewed: "مراجعة تحريرية", updated: "آخر تحديث", sourceNote: "تظهر المصادر كرابط داخل المقالة. راجع القواعد المحلية والمصدر الأصلي قبل اتخاذ أي إجراء." },
 };
 
 function renderParagraphWithLinks(paragraph: string) {
@@ -80,7 +81,7 @@ export default function NvBlogDetailPage() {
 
   return (
     <main className="min-h-screen bg-[#f8f7f4] pb-20" dir={currentLang === "ar" ? "rtl" : "ltr"}>
-      <article className="mx-auto max-w-4xl px-4 pt-10 sm:px-6 lg:px-8">
+      <article className={`mx-auto max-w-4xl px-4 pt-10 sm:px-6 lg:px-8 ${currentLang === "ar" ? "text-right" : "text-left"}`}>
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone-500">
           <Link href={`/${currentLang}/blog`} className="transition-colors hover:text-stone-900">
             {text.blog}
@@ -92,7 +93,7 @@ export default function NvBlogDetailPage() {
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">{formattedDate}</p>
         <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-stone-900 sm:text-5xl">{translation.title}</h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600">{translation.excerpt}</p>
-        <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1 text-sm text-stone-500">
+        <div className={`mt-6 flex flex-wrap gap-x-3 gap-y-1 text-sm text-stone-500 ${currentLang === "ar" ? "justify-end" : "justify-start"}`}>
           <span>{text.reviewed}: NEVEN Editorial Team</span>
           <span aria-hidden="true">•</span>
           <span>{text.updated}: {formattedDate}</span>
@@ -111,13 +112,27 @@ export default function NvBlogDetailPage() {
           />
         )}
 
-        <div className="prose prose-stone mt-10 max-w-none prose-headings:font-semibold prose-p:text-[1.06rem] prose-p:leading-8">
+        <div className={`prose prose-stone mt-10 max-w-none prose-headings:font-semibold prose-p:text-[1.06rem] prose-p:leading-8 ${currentLang === "ar" ? "text-right prose-headings:text-right prose-p:text-right" : "text-left"}`}>
           {paragraphs.map((paragraph, index) => {
             const heading = paragraph.replace(/^#{1,3}\s+/, "");
             const looksLikeHeading = /^#{1,3}\s+/.test(paragraph);
             return looksLikeHeading ? <h2 key={index}>{heading}</h2> : <p key={index}>{renderParagraphWithLinks(paragraph)}</p>;
           })}
         </div>
+
+        {activeArticle.related_product && (
+          <div className={`mt-10 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm ${currentLang === "ar" ? "text-right" : "text-left"}`}>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-stone-500">{text.product}</p>
+            <Link
+              href={`/${currentLang}/products/${activeArticle.related_product.slug}`}
+              className="mt-2 inline-flex max-w-full items-center font-semibold text-stone-900 underline decoration-stone-400 underline-offset-4 transition-colors hover:decoration-stone-900"
+            >
+              {currentLang === "ar" && activeArticle.related_product.ar_title
+                ? activeArticle.related_product.ar_title
+                : activeArticle.related_product.title}
+            </Link>
+          </div>
+        )}
 
         <aside className="mt-10 rounded-xl border border-stone-200 bg-white px-5 py-4 text-sm leading-6 text-stone-600">
           <strong className="text-stone-900">{text.reviewed}.</strong> {text.sourceNote}
@@ -132,7 +147,7 @@ export default function NvBlogDetailPage() {
 
       {related.length > 0 && (
         <section className="mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8" aria-labelledby="related-articles-heading">
-          <h2 id="related-articles-heading" className="text-2xl font-semibold text-stone-900">{text.related}</h2>
+          <h2 id="related-articles-heading" className={`text-2xl font-semibold text-stone-900 ${currentLang === "ar" ? "text-right" : "text-left"}`}>{text.related}</h2>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {related.map((item) => {
               const itemTranslation = item.translations[currentLang] ?? item.translations.en;
