@@ -56,7 +56,7 @@ describe('energy-type content additions', () => {
 
   it('contains ten new posts with complete EN/DE/AR SEO and body fields', () => {
     const posts = load<BlogPost[]>('blog.json');
-    const added = posts.filter((post) => post.id >= 190);
+    const added = posts.filter((post) => post.id >= 190 && post.id < 200);
 
     expect(added).toHaveLength(10);
     expect(new Set(added.map((post) => post.featured_image))).toEqual(new Set([
@@ -77,13 +77,32 @@ describe('energy-type content additions', () => {
   });
 
   it('does not present the pictured products as verified energy or wellness products', () => {
-    const posts = load<BlogPost[]>('blog.json').filter((post) => post.id >= 190);
+    const posts = load<BlogPost[]>('blog.json').filter((post) => post.id >= 190 && post.id < 200);
     const combined = posts.map((post) => post.translations.en.content).join('\n');
 
     expect(combined).toContain('not verified');
     expect(combined).toContain('unverified');
     expect(combined).toContain('FDA');
     expect(combined).toContain('EU Tobacco Products Directive');
+  });
+  it('adds five Arabic posts between the existing English-led date bands', () => {
+    const posts = load<BlogPost[]>('blog.json');
+    const added = posts.filter((post) => post.id >= 200 && post.id <= 204);
+    expect(added).toHaveLength(5);
+    expect(added.every((post) => post.translations.ar.title.length > 10)).toBe(true);
+    expect(added.every((post) => post.translations.ar.content.length > 400)).toBe(true);
+    expect(added.every((post) => post.seo.ar.keywords.length > 10)).toBe(true);
+    const positions = new Map(posts.map((post, index) => [post.id, index]));
+    expect(positions.get(200)).toBeGreaterThan(positions.get(199)!);
+    expect(positions.get(200)).toBeLessThan(positions.get(198)!);
+    expect(positions.get(201)).toBeGreaterThan(positions.get(197)!);
+    expect(positions.get(201)).toBeLessThan(positions.get(196)!);
+    expect(positions.get(202)).toBeGreaterThan(positions.get(195)!);
+    expect(positions.get(202)).toBeLessThan(positions.get(194)!);
+    expect(positions.get(203)).toBeGreaterThan(positions.get(193)!);
+    expect(positions.get(203)).toBeLessThan(positions.get(192)!);
+    expect(positions.get(204)).toBeGreaterThan(positions.get(191)!);
+    expect(positions.get(204)).toBeLessThan(positions.get(190)!);
   });
   it('keeps the product-detail route ahead of the product-list and language-home routes', () => {
     const app = fs.readFileSync(path.join(process.cwd(), 'client', 'src', 'App.tsx'), 'utf8');
