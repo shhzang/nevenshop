@@ -11,7 +11,7 @@ import {
   getDesignTokens,
 } from './data-store';
 import { getBlogArticles } from './blog-seo';
-import { escapeXml, PRIMARY_SITE_URL } from './seo-config';
+import { generateSitemapXml } from './sitemap';
 
 const router = Router();
 
@@ -112,57 +112,7 @@ router.post('/contact', async (req: Request, res: Response) => {
 // ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 router.get('/sitemap.xml', (_req: Request, res: Response) => {
-  const langs = ['en', 'de', 'ar'];
-  const products = getProducts();
-  const pages = getPages();
-  const blogArticles = getBlogArticles();
-  
-  // Use one stable public canonical domain. Proxy hosts must never enter a public Sitemap.
-  const baseUrl = PRIMARY_SITE_URL;
-
-  const urls: string[] = [];
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
-
-  for (const lang of langs) {
-    // Homepage
-    urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}`)}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`);
-    
-    // Products listing page
-    urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/products`)}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`);
-    
-    // Individual products
-    for (const p of products) {
-      urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/products/${p.slug}`)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
-    }
-    
-    // Static pages
-    for (const pg of pages) {
-      urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/page/${pg.slug}`)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`);
-    }
-
-    // Blog listing and independently crawlable article pages
-    urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/blog`)}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`);
-    for (const article of blogArticles) {
-      const imageUrl = article.featured_image?.startsWith('http')
-        ? article.featured_image
-        : article.featured_image
-          ? `${baseUrl}${article.featured_image}`
-          : '';
-      const imageXml = imageUrl
-        ? `<image:image><image:loc>${escapeXml(imageUrl)}</image:loc><image:title>${escapeXml(article.translations[lang]?.title || article.translations.en.title)}</image:title></image:image>`
-        : '';
-      urls.push(`<url><loc>${escapeXml(`${baseUrl}/${lang}/blog/${article.slug}`)}</loc><lastmod>${article.date || today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>${imageXml}</url>`);
-    }
-  }
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${urls.join('\n')}
-</urlset>`;
-
-  res.set('Content-Type', 'application/xml; charset=utf-8');
-  res.send(xml);
+  res.type('application/xml').send(generateSitemapXml());
 });
 
 export default router;

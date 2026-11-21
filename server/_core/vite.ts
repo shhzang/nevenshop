@@ -37,18 +37,18 @@ async function injectRouteSEO(html: string, originalUrl: string): Promise<string
   if (productDetailMatch) {
     const [, lang, slug] = productDetailMatch;
     const seo = getProductDetailSEO(slug, lang, baseUrl);
-    return seo ? injectPageSEO(html, seo, seo.title) : html;
+    return seo ? injectPageSEO(html, seo, seo.title, lang) : html;
   }
 
   if (productListingMatch) {
     const seo = getProductsListingSEO(productListingMatch[1], baseUrl);
-    return injectPageSEO(html, seo, seo.title);
+    return injectPageSEO(html, seo, seo.title, productListingMatch[1]);
   }
 
   if (staticPageMatch) {
     const [, lang, slug] = staticPageMatch;
     const seo = getStaticPageSEO(slug, lang, baseUrl);
-    return seo ? injectPageSEO(html, seo, seo.title) : html;
+    return seo ? injectPageSEO(html, seo, seo.title, lang) : html;
   }
 
   const homepageMatch = pathname.match(/^\/(en|de|ar)$/);

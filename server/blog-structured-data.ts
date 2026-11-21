@@ -5,6 +5,7 @@ interface BlogArticle {
   id: number;
   slug: string;
   date: string;
+  published_at?: string;
   featured_image?: string;
   seo?: {
     [key: string]: {
@@ -30,7 +31,7 @@ export function generateBlogArticleSchema(article: BlogArticle, lang: string, ba
     ? article.featured_image
     : article.featured_image
       ? `${baseUrl}${article.featured_image}`
-      : `${baseUrl}/logo.png`;
+      : `${baseUrl}/manus-storage/logo-black_f44d892e.png`;
   
   return {
     '@context': 'https://schema.org',
@@ -38,20 +39,20 @@ export function generateBlogArticleSchema(article: BlogArticle, lang: string, ba
     headline: seoData?.title || translation.title,
     description: seoData?.description || translation.excerpt,
     image: imageUrl,
-    datePublished: article.date,
-    dateModified: article.date,
+    datePublished: article.published_at || article.date,
+    dateModified: article.published_at || article.date,
     author: {
       '@type': 'Organization',
       name: 'NEVEN',
       url: baseUrl,
-      logo: `${baseUrl}/logo.png`,
+      logo: `${baseUrl}/manus-storage/logo-black_f44d892e.png`,
     },
     publisher: {
       '@type': 'Organization',
       name: 'NEVEN',
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/logo.png`,
+        url: `${baseUrl}/manus-storage/logo-black_f44d892e.png`,
       },
     },
     mainEntityOfPage: {
@@ -75,7 +76,7 @@ export function generateBlogListingSchema(baseUrl: string, lang = 'en') {
       name: 'NEVEN',
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/logo.png`,
+        url: `${baseUrl}/manus-storage/logo-black_f44d892e.png`,
       },
     },
   };

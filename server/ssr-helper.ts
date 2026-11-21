@@ -93,16 +93,32 @@ export function injectSEOMetadata(html: string, seo: SEOMetadata, baseUrl?: stri
   const structuredData = baseUrl ? generateHomepageStructuredData(baseUrl) : '';
   const canonical = baseUrl ? `${baseUrl}/${lang}` : '';
   const alternateLinks = baseUrl
-    ? ['en', 'de', 'ar'].map((locale) => `<link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}">`).join('\n')
+    ? [
+        ...['en', 'de', 'ar'].map((locale) => `<link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}">`),
+        `<link rel="alternate" hreflang="x-default" href="${baseUrl}/en">`,
+      ].join('\n')
     : '';
   const withoutBaseSeo = html
     .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/i, '')
-    .replace(/<meta\s+name=["'](?:description|keywords)["'][^>]*>\s*/gi, '')
-    .replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '');
+    .replace(/<meta\s+name=["'](?:description|keywords)[^>]*>\s*/gi, '')
+    .replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '')
+    .replace(/<meta\s+name=["'](?:robots|googlebot)["'][^>]*>\s*/gi, '')
+    .replace(/<meta\s+property=["']og:[^>]*>\s*/gi, '')
+    .replace(/<meta\s+name=["']twitter:[^>]*>\s*/gi, '');
   const headSeo = [
     `<title>${escapeHtml(seo.title)}</title>`,
     `<meta name="description" content="${escapeHtml(seo.description)}">`,
     `<meta name="keywords" content="${escapeHtml(seo.keywords)}">`,
+    `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:title" content="${escapeHtml(seo.title)}">`,
+    `<meta property="og:description" content="${escapeHtml(seo.description)}">`,
+    `<meta property="og:url" content="${canonical}">`,
+    `<meta property="og:image" content="${baseUrl}/manus-storage/logo-black_f44d892e.png">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${escapeHtml(seo.title)}">`,
+    `<meta name="twitter:description" content="${escapeHtml(seo.description)}">`,
+    `<meta name="twitter:image" content="${baseUrl}/manus-storage/logo-black_f44d892e.png">`,
     canonical ? `<link rel="canonical" href="${canonical}">` : '',
     alternateLinks,
   ].filter(Boolean).join('\n');
@@ -116,7 +132,8 @@ export function injectSEOMetadata(html: string, seo: SEOMetadata, baseUrl?: stri
     `${h1Html}${imageHtml}${structuredData}<div id="root"></div>`
   );
 
-  return modifiedHtml;
+  const direction = lang === 'ar' ? ' dir="rtl"' : '';
+  return modifiedHtml.replace('<html lang="en">', `<html lang="${lang}"${direction}>`);
 }
 
 /**

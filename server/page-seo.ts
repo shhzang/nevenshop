@@ -231,21 +231,49 @@ export function generateMetaTags(seo: PageSEOMetadata): string {
   return tags.join('\n');
 }
 
+function generateAlternateLinks(pathname: string, baseUrl: string): string {
+  return [
+    ...['en', 'de', 'ar'].map((locale) => `<link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}${pathname}">`),
+    `<link rel="alternate" hreflang="x-default" href="${baseUrl}/en${pathname}">`,
+  ].join('\n');
+}
+
 /**
  * Injects route-specific metadata into the initial HTML response before the
  * client app renders. This prevents indexable client routes from inheriting
  * the homepage's canonical URL and leaves a crawlable H1 for no-JS fetches.
  */
-export function injectPageSEO(html: string, seo: PageSEOMetadata, h1Title: string): string {
+export function injectPageSEO(html: string, seo: PageSEOMetadata, h1Title: string, lang = 'en'): string {
   const withoutBaseSeo = html
     .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/i, '')
-    .replace(/<meta\s+name=["'](?:description|keywords)["'][^>]*>\s*/gi, '')
+    .replace(/<meta\s+name=["'](?:description|keywords)[^>]*>\s*/gi, '')
     .replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '')
-    .replace(/<meta\s+property=["']og:(?:type|title|description|url|image)["'][^>]*>\s*/gi, '')
-    .replace(/<meta\s+name=["']twitter:(?:card|title|description|image)["'][^>]*>\s*/gi, '');
+    .replace(/<link\s+rel=["']alternate["'][^>]*>\s*/gi, '')
+    .replace(/<meta\s+property=["']og:(?:type|title|description|url|image)[^>]*>\s*/gi, '')
+    .replace(/<meta\s+name=["']twitter:(?:card|title|description|image)[^>]*>\s*/gi, '')
+    .replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '');
   const fallback = `<main data-seo-fallback><h1>${escapeHtml(h1Title)}</h1><p>${escapeHtml(seo.description)}</p></main>`;
-  const withHead = withoutBaseSeo.replace('</head>', `${generateMetaTags(seo)}\n</head>`);
-  return withHead.replace('<div id="root"></div>', `${fallback}<div id="root"></div>`);
+  const canonicalUrl = seo.canonical || 'https://neven.bar/en';
+  const canonical = new URL(canonicalUrl);
+  const pathname = canonical.pathname.replace(/^\/[^/]+/, '') || '';
+  const social = [
+    `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`,
+    `<meta property="og:type" content="${seo.ogImage ? 'product' : 'website'}">`,
+    seo.ogTitle ? `<meta property="og:title" content="${escapeHtml(seo.ogTitle)}">` : '',
+    seo.ogDescription ? `<meta property="og:description" content="${escapeHtml(seo.ogDescription)}">` : '',
+    seo.ogUrl ? `<meta property="og:url" content="${escapeHtml(seo.ogUrl)}">` : '',
+    seo.ogImage ? `<meta property="og:image" content="${escapeHtml(seo.ogImage)}">` : '',
+    `<meta name="twitter:card" content="summary_large_image">`,
+    seo.ogTitle ? `<meta name="twitter:title" content="${escapeHtml(seo.ogTitle)}">` : '',
+    seo.ogDescription ? `<meta name="twitter:description" content="${escapeHtml(seo.ogDescription)}">` : '',
+    seo.ogImage ? `<meta name="twitter:image" content="${escapeHtml(seo.ogImage)}">` : '',
+    generateAlternateLinks(pathname, canonical.origin),
+  ].filter(Boolean).join('\n');
+  const withHead = withoutBaseSeo.replace('</head>', `${generateMetaTags(seo)}\n${social}\n</head>`);
+  const direction = lang === 'ar' ? ' dir="rtl"' : '';
+  return withHead
+    .replace('<html lang="en">', `<html lang="${lang}"${direction}>`)
+    .replace('<div id="root"></div>', `${fallback}<div id="root"></div>`);
 }
 
 /**

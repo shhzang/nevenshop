@@ -9,6 +9,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import nevenshopRoutes from "../nevenshop-routes";
+import { generateSitemapXml } from "../sitemap";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -39,9 +40,9 @@ async function startServer() {
   registerOAuthRoutes(app);
   // NevenShopper REST API routes
   app.use('/api', nevenshopRoutes);
-  // Keep the public sitemap at the conventional root URL while the generator lives with API routes.
+  // Keep the public sitemap at the conventional root URL with a direct 200 response.
   app.get('/sitemap.xml', (_req, res) => {
-    res.redirect(301, '/api/sitemap.xml');
+    res.type('application/xml').send(generateSitemapXml());
   });
   // tRPC API
   app.use(

@@ -97,10 +97,13 @@ export function injectBlogListingSEO(html: string, lang: string, baseUrl: string
     `<meta property="og:description" content="${escapeHtml(copy.description)}">`,
     `<meta property="og:url" content="${canonical}">`,
     `<meta name="twitter:card" content="summary_large_image">`,
+    ...['en', 'de', 'ar'].map((locale) => `<link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/blog">`),
+    `<link rel="alternate" hreflang="x-default" href="${baseUrl}/en/blog">`,
     scriptTag(generateBlogListingSchema(baseUrl, lang)),
   ].join("\n");
   const fallback = `<main data-seo-fallback><h1>${escapeHtml(copy.h1)}</h1>${cards}</main>`;
-  return injectHead(html, head, fallback);
+  const direction = lang === 'ar' ? ' dir="rtl"' : '';
+  return injectHead(html, head, fallback).replace('<html lang="en">', `<html lang="${lang}"${direction}>`);
 }
 
 export function injectBlogArticleSEO(html: string, article: BlogArticle, lang: string, baseUrl: string): string {
@@ -112,6 +115,7 @@ export function injectBlogArticleSEO(html: string, article: BlogArticle, lang: s
   const canonical = `${baseUrl}/${lang}/blog/${article.slug}`;
   const alternateLinks = ["en", "de", "ar"]
     .map((locale) => `<link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}/blog/${article.slug}">`)
+    .concat(`<link rel="alternate" hreflang="x-default" href="${baseUrl}/en/blog/${article.slug}">`)
     .join("\n");
   const articleHtml = translation.content
     .split("\n\n")
@@ -141,5 +145,6 @@ export function injectBlogArticleSEO(html: string, article: BlogArticle, lang: s
     scriptTag(generateBreadcrumbSchema(article, lang, baseUrl)),
   ].filter(Boolean).join("\n");
   const fallback = `<main data-seo-fallback><article><h1>${escapeHtml(translation.title)}</h1>${image ? `<img src="${image}" alt="${escapeHtml(translation.title)}">` : ""}<p>${escapeHtml(translation.excerpt)}</p>${articleHtml}</article></main>`;
-  return injectHead(html, head, fallback);
+  const direction = lang === 'ar' ? ' dir="rtl"' : '';
+  return injectHead(html, head, fallback).replace('<html lang="en">', `<html lang="${lang}"${direction}>`);
 }

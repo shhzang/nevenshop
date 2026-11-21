@@ -4,17 +4,8 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-
-# Specific rules for Google
-User-agent: Googlebot
-Allow: /
-
-# Specific rules for Bing
-User-agent: Bingbot
-Allow: /
+Disallow: /api/
+Allow: /api/sitemap.xml
 
 # Sitemap location
 Sitemap: https://neven.bar/sitemap.xml
-
-# Crawl delay (optional)
-Crawl-delay: 1
